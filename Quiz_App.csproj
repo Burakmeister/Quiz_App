@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\logo.svg" />
     <None Remove="Models\Answer.hbm.xml" />
     <None Remove="Models\Question.hbm.xml" />
     <None Remove="Models\Quiz.hbm.xml" />
@@ -24,6 +25,10 @@
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.33" />
     <PackageReference Include="NHibernate" Version="5.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\logo.svg" />
   </ItemGroup>
 
 </Project>

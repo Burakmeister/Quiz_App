@@ -28,11 +28,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Image Grid.Column="1">
-            <Image.Source>
-                <BitmapImage UriSource="/images/logo2.png"/>
-            </Image.Source>
-        </Image>
+        <Image Source="/images/logo.svg" Width="300" Height="300"/>
         <TextBox x:Name="loginBox" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5" GotFocus="gotFocusLoginBox" LostFocus="lostFocusLoginBox">Login</TextBox>
         <PasswordBox x:Name="paswdBox" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5"></PasswordBox>
         <Button x:Name="submit" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="20,2" Click="submit_Click">Zaloguj</Button>
