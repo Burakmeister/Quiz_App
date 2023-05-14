@@ -36,10 +36,28 @@ namespace Quiz_App
             InitializeComponent();
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void changeMode_Click(object sender, RoutedEventArgs e)
         {
             isLoginMode = !isLoginMode;
-            if(isLoginMode)
+            if (isLoginMode)
             {
                 changeMode.Content = "Nie masz konta?";
                 submit.Content = "Zaloguj";
@@ -70,7 +88,7 @@ namespace Quiz_App
                     object obj = query.UniqueResult();
                     if (obj != null)
                     {
-                        User = (User) obj;
+                        User = (User)obj;
                     }
                     mySession.Transaction.Commit();
                 }
@@ -89,13 +107,13 @@ namespace Quiz_App
                 // Add Record
                 using (mySession.BeginTransaction())
                 {
-                    User user = new User { Login = loginBox.Text, Password = paswdBox.Password};
+                    User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
                     mySession.Save(user);
                     mySession.Transaction.Commit();
                 }
             }
         }
-        
+
         private void gotFocusLoginBox(object sender, RoutedEventArgs e)
         {
             if (loginBox.Text == "Login")
@@ -106,9 +124,11 @@ namespace Quiz_App
 
         private void lostFocusLoginBox(object sender, RoutedEventArgs e)
         {
-            if(loginBox.Text == string.Empty) {
+            if (loginBox.Text == string.Empty)
+            {
                 loginBox.Text = "Login";
             }
         }
     }
 }
+
