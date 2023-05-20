@@ -11,6 +11,7 @@
     <None Remove="images\key-icon.png" />
     <None Remove="images\logo.png" />
     <None Remove="images\logo.svg" />
+    <None Remove="images\quiz-logo.svg" />
     <None Remove="images\user-icon.png" />
     <None Remove="Models\Answer.hbm.xml" />
     <None Remove="Models\Question.hbm.xml" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <Resource Include="images\key-icon.png" />
     <Resource Include="images\logo.png" />
+    <Resource Include="images\quiz-logo.svg" />
     <Resource Include="images\user-icon.png" />
   </ItemGroup>
 
