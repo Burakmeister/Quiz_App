@@ -14,12 +14,14 @@
                             Orientation="Vertical"
                             Margin="0,35,0,0">
             <Popup x:Name="ErrorPopup" IsOpen="False" Placement="Center">
-                <Border Background="#BDBB20" BorderBrush="Transparent" >
-                    <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White"></TextBlock>
+                <Border Background="#2B2D42">
+                    <StackPanel>
+                        <Image Source="/images/invalid.png" Width="100" Height="130"/>
+                        <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                    </StackPanel>
                 </Border>
             </Popup>
-            <Image Source="/images/logo.png"
-                           Width="100" Height="100"/>
+            <Image Source="/images/logo.png" Width="100" Height="100"/>
 
             <TextBlock Text="Quiz App"
                                Foreground="White"

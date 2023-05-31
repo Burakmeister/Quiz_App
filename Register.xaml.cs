@@ -38,7 +38,11 @@ namespace Quiz_App
 
         private void checkTheRegisterCredentials(object sender, RoutedEventArgs e)
         {
-            if (true)//bool wskazujący czy credentials się niezgadzają 
+            if (false)//bool wskazujący czy credentials są poprawne 
+            {
+
+            }
+            else
             {
                 showTheCredentialsError();
             }

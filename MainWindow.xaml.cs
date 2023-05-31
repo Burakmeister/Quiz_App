@@ -58,6 +58,11 @@ namespace Quiz_App
         {
             MainContent.NavigationService.Navigate(new Register());
         }
+
+        public void NavigateToHomepage()
+        {
+            MainContent.NavigationService.Navigate(new Homepage());
+        }
     }
 }
 

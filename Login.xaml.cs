@@ -34,5 +34,28 @@ namespace Quiz_App
                 mainWindow.NavigateToRegisterPage();
             }
         }
+
+        private void checkTheLoginCredentials(object sender, RoutedEventArgs e)
+        {
+
+            if (true)//bool wskazujący czy credentials są poprawne 
+            {
+                if (Application.Current.MainWindow is MainWindow mainWindow)
+                {
+                    mainWindow.NavigateToHomepage();
+                }
+            }
+            else 
+            {
+                showTheCredentialsError();
+            }
+        }
+
+        private async void showTheCredentialsError()
+        {
+            ErrorPopup.IsOpen = true;
+            await Task.Delay(2000);
+            ErrorPopup.IsOpen = false;
+        }
     }
 }

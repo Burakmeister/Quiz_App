@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\invalid.png" />
     <None Remove="images\key-icon.png" />
     <None Remove="images\logo.png" />
     <None Remove="images\logo.svg" />
@@ -36,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\invalid.png" />
     <Resource Include="images\key-icon.png" />
     <Resource Include="images\logo.png" />
     <Resource Include="images\user-icon.png" />
