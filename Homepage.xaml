@@ -6,8 +6,11 @@
       xmlns:local="clr-namespace:Quiz_App"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
-      Title="Homepage">
+      Title="Homepage"
+      >
 
+    <!-- Loaded="Page_Loaded" można doać do Page<> aby zamykać popup kiedy minimalizuje się okno ale tylko kiedy używa się przycisku do minimalizowania, przy alt tab nie działa -->
+    
     <Grid>
         
         <Grid.RowDefinitions>
@@ -15,6 +18,101 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Popup x:Name="QuizOption" IsOpen="False" Placement="MousePoint">
+            <Border Background="Transparent">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <Button x:Name="deleteAQuiz" 
+                                Grid.Row="0"
+                                Content="Delete quiz" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Margin="0,0,0,0"
+                                Click="refreshHomepage"
+                        >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="FontFamily" Value="Montserrat" />
+                                    <Setter Property="Margin" Value="10,5,10,5" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="printAQuiz" 
+                                Grid.Row="0"
+                                Content="Print" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Margin="0,0,0,0"
+                                Click="refreshHomepage"
+                        >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="FontFamily" Value="Montserrat" />
+                                    <Setter Property="Margin" Value="10,5,10,5" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="editAQuiz" 
+                                Grid.Row="0"
+                                Content="Edit quiz" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Margin="0,0,0,0"
+                                Click="refreshHomepage"
+                        >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="FontFamily" Value="Montserrat" />
+                                    <Setter Property="Margin" Value="10,5,10,5" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
+
 
         <Button x:Name="logOut" 
                 Grid.Row="0"
@@ -84,7 +182,7 @@
             </Button.Template>
         </Button>
 
-        <ListBox Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Quizzes}" Background="#2B2D42">
+        <ListBox Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Quizzes}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

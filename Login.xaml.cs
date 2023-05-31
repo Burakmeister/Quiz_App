@@ -47,7 +47,7 @@ namespace Quiz_App
             }
             else 
             {
-                showTheCredentialsError();
+                //showTheCredentialsError();
             }
         }
 

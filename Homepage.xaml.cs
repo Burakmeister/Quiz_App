@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Asn1.BC;
+﻿using Microsoft.VisualBasic.FileIO;
+using Org.BouncyCastle.Asn1.BC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,46 @@ namespace Quiz_App
                 mainWindow.NavigateToLoginPage();
             }
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) //index wybranego Quizu
+        {
+            QuizOption.IsOpen = false;
+            ListBox listBox = (ListBox)sender;
+            int selectedIndex = listBox.SelectedIndex;
+            if (selectedIndex >= 0)
+            {
+                Console.WriteLine("Selected Index: " + selectedIndex);
+            }
+            QuizOption.IsOpen = true;
+        }
+
+        private void refreshHomepage(object sender, RoutedEventArgs e)
+        {
+            //wyloguj użytkownika
+
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.NavigateToHomepage();
+            }
+        }
+
+
+        // kod odpowiedzialny za działanie Loaded="Page_Loaded" w Homepage.xaml 
+        //private void Page_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Window parentWindow = Window.GetWindow(this);
+        //    parentWindow.StateChanged += ParentWindow_StateChanged;
+        //}
+
+        //private void ParentWindow_StateChanged(object sender, EventArgs e)
+        //{
+        //    WindowState windowState = (sender as Window).WindowState;
+        //    if (windowState == WindowState.Minimized)
+        //    {
+        //        QuizOption.IsOpen = false;
+        //    }
+        //}
+
 
     }
 }
