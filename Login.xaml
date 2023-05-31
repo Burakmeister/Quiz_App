@@ -23,8 +23,7 @@
                 </Border>
             </Popup>
 
-            <Image Source="/images/logo.png"
-                           Width="100" Height="100"/>
+            <Image Source="/images/logo.png" Width="100" Height="100"/>
 
             <TextBlock Text="Quiz App"
                                Foreground="White"

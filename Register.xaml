@@ -14,13 +14,22 @@
                             Orientation="Vertical"
                             Margin="0,35,0,0">
             <Popup x:Name="ErrorPopup" IsOpen="False" Placement="Center">
-                <Border Background="#2B2D42">
-                    <StackPanel>
-                        <Image Source="/images/invalid.png" Width="100" Height="130"/>
-                        <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
-                    </StackPanel>
-                </Border>
-            </Popup>
+    <Border Background="Transparent" >
+        <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFFFFF" Offset="0"/>
+                    <GradientStop Color="#F8F32B" Offset="0.75"/>
+                    <GradientStop Color="#000000" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <StackPanel>
+                <Image Source="/images/invalid.png" Width="100" Height="130"/>
+                <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,10,5,20"></TextBlock>
+            </StackPanel>
+        </Border>
+    </Border>
+</Popup>
             <Image Source="/images/logo.png" Width="100" Height="100"/>
 
             <TextBlock Text="Quiz App"
