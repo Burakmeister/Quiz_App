@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="images\quizlogo.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Models\Answer.hbm.xml" />
     <EmbeddedResource Include="Models\Quiz.hbm.xml" />
     <EmbeddedResource Include="Models\Question.hbm.xml" />
@@ -34,7 +38,6 @@
   <ItemGroup>
     <Resource Include="images\key-icon.png" />
     <Resource Include="images\logo.png" />
-    <Resource Include="images\quiz-logo.svg" />
     <Resource Include="images\user-icon.png" />
   </ItemGroup>
 

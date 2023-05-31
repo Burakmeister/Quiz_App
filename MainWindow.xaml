@@ -42,7 +42,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="LOG IN"
+                    <TextBlock Text="QUIZ APP"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -110,140 +110,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <StackPanel Width="220"
-                            Grid.Row="1"
-                            Orientation="Vertical"
-                            Margin="0,35,0,0">
-
-                    <Image Source="/images/quiz-logo.svg"
-                           Width="100" Height="100"/>
-
-                    <TextBlock Text="Quiz App"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               HorizontalAlignment="Center"/>
-                    <TextBlock Text="Challenge yourself and expand your knowledge."
-                               Foreground="LightGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               Margin="0,5,0,0"/>
-                    <TextBlock Text="Username"
-                               Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0,35,0,0"/>
-                    <TextBox x:Name="loginBox"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0">
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="images\user-icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBlock Text="Password"
-                               Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0,15,0,0"/>
-                    <PasswordBox x:Name="paswdBox"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0"
->
-                        <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Images/key-icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                        </PasswordBox.Background>
-                    </PasswordBox>
-                    <Button x:Name="submit"                          
-                            BorderThickness="0"
-                            Content="Submit"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"                           
-                            Margin="0,50,0,0"
-                            Click="submit_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#BDBB20"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#98961E"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
-                                        CornerRadius="20"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
-                    <Button x:Name="changeMode" 
-                        Grid.Row="4" 
-                        Grid.Column="1" 
-                        Content="Nie masz konta?" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" 
-                        Click="changeMode_Click"
-                        FontSize="12"
-                        FontWeight="Medium"
-                        FontFamily="Montserrat"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Center">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="DarkGray" />
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="FontWeight" Value="Medium" />
-                                <Setter Property="FontFamily" Value="Montserrat" />
-                                <Setter Property="Margin" Value="0,10,0,0" />
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Foreground" Value="White" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-                </StackPanel>
+                <Frame  x:Name="MainContent" Grid.Row="1"></Frame>
             </Grid>
         </Border>
     </Border>

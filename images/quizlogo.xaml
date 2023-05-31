@@ -1,0 +1,202 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Quiz_App="clr-namespace:quizlogo">
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry1Key}">F1 M700,700z M0,0z M85.024715,581.4921L608.66787,581.4921</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry2Key}">F1 M700,700z M0,0z M116.2418,639.5195L207.95523,640.08914</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry3Key}">F1 M700,700z M0,0z M116.2418,716.21308L207.95523,716.78272</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry4Key}">F1 M700,700z M0,0z M116.2418,779.3725L207.95523,779.94214</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry5Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry6Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry7Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry8Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry9Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry10Key}">F1 M700,700z M0,0z M-441.43666,402.32901C-441.43666,405.39742 -444.37636,407.88485 -448.00266,407.88485 -451.62895,407.88485 -454.56865,405.39742 -454.56865,402.32901 -454.56865,399.2606 -451.62895,396.77317 -448.00266,396.77317 -444.37636,396.77317 -441.43666,399.2606 -441.43666,402.32901z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry11Key}">F0 M700,700z M0,0z M209.5,105.85C209.5,105.45,209.5,105.033,209.5,104.6L209.35,36.2 209.5,20.65 209.35,36.2 209.5,104.6C209.5,105.033,209.5,105.45,209.5,105.85L209.5,138.65 217.9,137.65C227.067,136.983 240.6,136.65 258.5,136.65 289.333,136.65 310.75,122.983 322.75,95.65 326.517,87.117 329.1,77.717 330.5,67.45 331.2,62.317 331.533,58.05 331.5,54.65L331.25,3.64999999999998C325.083,-117.783 313.167,-210.85 295.5,-275.55 277.867,-340.25 262.2,-391.517 248.5,-429.35L-115.5,-430.35C-151.7,-257.383 -223.683,-122.717 -331.45,-26.35 -306.75,88.383 -249.1,89.7 -158.5,-22.4L-158.5,350.65C-158.4,353.65 -158.083,357.2 -157.55,361.299 -156.25,371.566 -153.867,380.966 -150.4,389.499 -140.033,415.032 -122.067,428.633 -96.5,430.299 -70.9,428.633 -52.917,415.032 -42.55,389.499 -39.084,380.966 -36.7,371.565 -35.4,361.299 -34.867,357.199 -34.567,353.65 -34.5,350.65L-34.5,225.55 -34.5,108.55 -34.5,225.55 -26.1,225.55C-16.933,224.884 -3.4,224.55 14.5,224.55 45.333,224.55 66.75,210.884 78.75,183.55 82.517,175.017 85.1,165.617 86.5,155.35 87.067,151.25 87.4,147.7 87.5,144.7L87.5,69.7 87.5,144.7 87.5,186.7 95.9,186.7C105.067,186.033 118.6,185.7 136.5,185.7 167.333,185.7 188.75,172.033 200.75,144.7 204.517,136.166 207.1,126.766 208.5,116.5 209.067,112.4 209.4,108.85 209.5,105.85z M209.05,11.7L209.35,36.2 209.05,11.7z</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry12Key}">F0 M700,700z M0,0z M209.5,105.85C209.4,108.85 209.067,112.4 208.5,116.5 207.1,126.767 204.517,136.167 200.75,144.7 188.75,172.033 167.333,185.7 136.5,185.7 118.6,185.7 105.067,186.033 95.9,186.7L87.5,186.7 87.5,144.7 87.5,69.7 M87.5,144.7C87.4,147.7 87.067,151.25 86.5,155.35 85.1,165.617 82.517,175.017 78.75,183.55 66.75,210.884 45.333,224.55 14.5,224.55 -3.4,224.55 -16.933,224.884 -26.1,225.55L-34.5,225.55 -34.5,108.55 M-34.5,225.55L-34.5,350.65C-34.567,353.65 -34.867,357.2 -35.4,361.299 -36.7,371.566 -39.084,380.966 -42.55,389.499 -52.917,415.032 -70.9,428.633 -96.5,430.299 -122.067,428.633 -140.033,415.032 -150.4,389.499 -153.867,380.966 -156.25,371.565 -157.55,361.299 -158.084,357.199 -158.4,353.65 -158.5,350.65L-158.5,-22.4C-249.1,89.7 -306.75,88.383 -331.45,-26.35 -223.683,-122.717 -151.7,-257.383 -115.5,-430.35L248.5,-429.35C262.2,-391.517 277.867,-340.25 295.5,-275.55 313.167,-210.85 325.083,-117.783 331.25,3.64999999999998L331.5,54.65C331.533,58.05 331.2,62.317 330.5,67.45 329.1,77.717 326.517,87.117 322.75,95.65 310.75,122.983 289.333,136.65 258.5,136.65 240.6,136.65 227.067,136.983 217.9,137.65L209.5,138.65 209.5,105.85C209.5,105.45,209.5,105.033,209.5,104.6L209.35,36.2 209.5,20.65 M209.05,11.7L209.35,36.2</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry13Key}">F1 M700,700z M0,0z M134.20038,656.48403L167.29696,656.88278</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry14Key}">F1 M700,700z M0,0z M134.20038,676.78527L167.29696,677.18402</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry15Key}">F1 M700,700z M0,0z M134.20038,697.0865L167.29696,697.48525</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry16Key}">F1 M700,700z M0,0z M134.20038,730.92189L167.29696,731.32064</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry17Key}">F1 M700,700z M0,0z M134.20038,751.22313L167.29696,751.62188</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry18Key}">F1 M700,700z M0,0z M134.20038,798.5927L167.29696,798.99145</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry19Key}">F1 M700,700z M0,0z M273.62269,826.29434L419.56667,826.29434</Geometry>
+  <Geometry x:Key="{x:Static Quiz_App:Quizlogo.quizlogoGeometry20Key}">F1 M700,700z M0,0z M285.31425,833.07316L407.87511,833.07316</Geometry>
+  <DrawingGroup x:Key="{x:Static Quiz_App:Quizlogo.quizlogoDrawingGroupKey}" ClipGeometry="M0,0 V700 H700 V0 H0 Z">
+    <DrawingGroup.Transform>
+      <TranslateTransform X="454.56866455078125" Y="430.35000610351563" />
+    </DrawingGroup.Transform>
+    <DrawingGroup Opacity="1" Transform="1,0,0,1,0,-352.36218">
+      <DrawingGroup Opacity="1" Transform="1.1752489,0,0,1.1752489,-57.630724,-172.32425">
+        <GeometryDrawing Brush="#FFFFFFFF">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="11.27846813" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="14.5009" RadiusY="14.5009" Rect="79.9497,554.0394,533.29,297.3194" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FF003380" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry1Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF003380" Thickness="57.3782959" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing>
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="11.27846813" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="14.5009" RadiusY="14.5009" Rect="79.9497,554.0394,533.29,297.3194" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry2Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="5.63923407" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry3Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="5.63923407" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry4Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="5.63923407" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,136.80725">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry5Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,157.10849">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry6Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,211.24514">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry7Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,231.54638">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry8Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,177.40974">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry9Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Transform="1.0933718,0,0,1.2921666,613.40629,278.91595">
+          <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry10Key}}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="#FFFFFFFF" Thickness="5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+        <GeometryDrawing Brush="#FF000000">
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="0" RadiusY="0" Rect="289.0745,853.2682,115.0404,70.4904" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FF000000">
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="0" RadiusY="0" Rect="187.2863,916.4277,318.6167,23.6848" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <DrawingGroup Opacity="1" Transform="0.10595004,-0.12323179,0.12323179,0.10595004,246.00218,716.84305">
+          <DrawingGroup>
+            <DrawingGroup.Transform>
+              <TransformGroup>
+                <TransformGroup>
+                  <ScaleTransform ScaleX="0.99999998627508579" ScaleY="0.99999998627508579" />
+                  <TranslateTransform X="5.0003568351462968E-06" Y="4.9996569213631159E-06" />
+                </TransformGroup>
+                <MatrixTransform>0.353,0,0,-0.353,127.91092853,360.15067147</MatrixTransform>
+              </TransformGroup>
+            </DrawingGroup.Transform>
+            <DrawingGroup Opacity="1">
+              <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry11Key}}" />
+              <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry12Key}}">
+                <GeometryDrawing.Pen>
+                  <Pen Brush="#FF000000" Thickness="65.65000153" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" MiterLimit="1" />
+                </GeometryDrawing.Pen>
+              </GeometryDrawing>
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingGroup>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry13Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry14Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry15Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry16Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry17Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry18Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FFDEDEDE">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF444444" Thickness="1.12784684" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="0" RadiusY="0" Rect="325.2614,803.5654,42.6667,12.7601" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry19Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF444444" Thickness="3.38354039" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoGeometry20Key}}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF444444" Thickness="3.10066009" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <DrawingGroup>
+          <DrawingGroup>
+            <GlyphRunDrawing ForegroundBrush="#FFFFFFFF">
+              <GlyphRunDrawing.GlyphRun>
+                <GlyphRun PixelsPerDip="1.25" BaselineOrigin="111.35442,605.96014" FontRenderingEmSize="57.22673416" BidiLevel="0" IsSideways="False" ClusterMap="0 1 2 3 4 5" Characters="SURVEY" GlyphIndices="54 56 53 57 40 60" AdvanceWidths="32.0766666666667 41.3833333333333 37.36 38.17 30.4566666666667 34.7333333333333" GlyphOffsets="0,0 0,0 0,0 0,0 0,0 0,0" Language="en-us">
+                  <GlyphRun.GlyphTypeface>
+                    <GlyphTypeface FontUri="C:\WINDOWS\FONTS\SEGOEUIB.TTF" StyleSimulations="None" />
+                  </GlyphRun.GlyphTypeface>
+                </GlyphRun>
+              </GlyphRunDrawing.GlyphRun>
+            </GlyphRunDrawing>
+          </DrawingGroup>
+        </DrawingGroup>
+      </DrawingGroup>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="{x:Static Quiz_App:Quizlogo.quizlogoDrawingImageKey}" Drawing="{StaticResource {x:Static Quiz_App:Quizlogo.quizlogoDrawingGroupKey}}" />
+</ResourceDictionary>

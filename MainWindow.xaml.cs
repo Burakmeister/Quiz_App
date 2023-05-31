@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Quiz_App
 {
     /// <summary>
@@ -24,16 +25,10 @@ namespace Quiz_App
     /// </summary>
     public partial class MainWindow : Window
     {
-        private User User { set; get; }
-
-        private Configuration myConfiguration;
-        private ISessionFactory mySessionFactory;
-        private ISession mySession;
-
-        private bool isLoginMode = true;
         public MainWindow()
         {
             InitializeComponent();
+            NavigateToLoginPage();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -54,80 +49,14 @@ namespace Quiz_App
             Application.Current.Shutdown();
         }
 
-        private void changeMode_Click(object sender, RoutedEventArgs e)
+        public void NavigateToLoginPage()
         {
-            isLoginMode = !isLoginMode;
-            if (isLoginMode)
-            {
-                changeMode.Content = "Nie masz konta?";
-                submit.Content = "Zaloguj";
-            }
-            else
-            {
-                changeMode.Content = "Posiadasz już konto?";
-                submit.Content = "Zarejestruj";
-            }
+            MainContent.NavigationService.Navigate(new Login());
         }
 
-        private void submit_Click(object sender, RoutedEventArgs e)
+        public void NavigateToRegisterPage()
         {
-            myConfiguration = new Configuration();
-            myConfiguration.Configure();
-            mySessionFactory = myConfiguration.BuildSessionFactory();
-            mySession = mySessionFactory.OpenSession();
-
-
-            if (isLoginMode)
-            {
-                // List Users
-                using (mySession.BeginTransaction())
-                {
-                    IQuery query = mySession.CreateQuery("FROM Quiz_App.Models.User u WHERE u.Login= :login AND u.Password = :password");
-                    query.SetParameter("login", loginBox.Text);
-                    query.SetParameter("password", paswdBox.Password);
-                    object obj = query.UniqueResult();
-                    if (obj != null)
-                    {
-                        User = (User)obj;
-                    }
-                    mySession.Transaction.Commit();
-                }
-                if (User == null)
-                {
-                    MessageBox.Show("Wprowadzono niewłaściwe dane!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Witaj " + User.Login + "!", "Siema", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
-
-                }
-            }
-            else
-            {
-                // Add Record
-                using (mySession.BeginTransaction())
-                {
-                    User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
-                    mySession.Save(user);
-                    mySession.Transaction.Commit();
-                }
-            }
-        }
-
-        private void gotFocusLoginBox(object sender, RoutedEventArgs e)
-        {
-            if (loginBox.Text == "Login")
-            {
-                loginBox.Text = string.Empty;
-            }
-        }
-
-        private void lostFocusLoginBox(object sender, RoutedEventArgs e)
-        {
-            if (loginBox.Text == string.Empty)
-            {
-                loginBox.Text = "Login";
-            }
+            MainContent.NavigationService.Navigate(new Register());
         }
     }
 }
