@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.BC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,21 @@ namespace Quiz_App
             {
                 mainWindow.NavigateToLoginPage();
             }
+        }
+
+        private void checkTheRegisterCredentials(object sender, RoutedEventArgs e)
+        {
+            if (true)//bool wskazujący czy credentials się niezgadzają 
+            {
+                showTheCredentialsError();
+            }
+        }
+
+        private async void showTheCredentialsError()
+        {
+            ErrorPopup.IsOpen = true;
+            await Task.Delay(2000);
+            ErrorPopup.IsOpen = false;
         }
     }
 }

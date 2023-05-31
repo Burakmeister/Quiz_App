@@ -13,7 +13,11 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-
+            <Popup x:Name="ErrorPopup" IsOpen="False" Placement="Center">
+                <Border Background="#BDBB20" BorderBrush="Transparent" >
+                    <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White"></TextBlock>
+                </Border>
+            </Popup>
             <Image Source="/images/logo.png"
                            Width="100" Height="100"/>
 
@@ -80,14 +84,16 @@
                                         AlignmentX="Left"/>
                 </PasswordBox.Background>
             </PasswordBox>
-            <Button x:Name="submit"                          
+            <Button x:Name="registerButton"                          
                             BorderThickness="0"
                             Content="Register"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
-                            Margin="0,50,0,0">
+                            Margin="0,50,0,0"
+                            Click="checkTheRegisterCredentials"
+                    >
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#BDBB20"/>
@@ -141,7 +147,6 @@
                     </Style>
                 </Button.Style>
             </Button>
-
         </StackPanel>
     </Grid>
 </Page>
