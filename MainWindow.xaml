@@ -110,7 +110,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Frame  x:Name="MainContent" Grid.Row="1"></Frame>
+                <Frame  x:Name="MainContent" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
             </Grid>
         </Border>
     </Border>
