@@ -17,17 +17,17 @@ namespace Quiz_App.DAOs
         {
             ISession mySession = getSession();
 
-            IQuery query = getSession().CreateQuery("FROM Quiz_App.Models.User u WHERE u.Login= :login AND u.Password = :password");
+            IQuery query = mySession.CreateQuery("FROM Quiz_App.Models.User u WHERE u.Login= :login AND u.Password = :password");
             query.SetParameter("login", login);
             query.SetParameter("password", password);
             object obj = query.UniqueResult();
             if (obj != null)
             {
+                mySession.Close();
                 return true;
             }
-            return false;
-
             mySession.Close();
+            return false;
         }
 
 

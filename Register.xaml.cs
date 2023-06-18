@@ -1,4 +1,7 @@
-﻿using Org.BouncyCastle.Asn1.BC;
+﻿using NHibernate;
+using Org.BouncyCastle.Asn1.BC;
+using Quiz_App.DAOs;
+using Quiz_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +25,8 @@ namespace Quiz_App
     /// </summary>
     public partial class Register : Page
     {
+        private User User { set; get; }
+
         public Register()
         {
             InitializeComponent();
@@ -38,9 +43,13 @@ namespace Quiz_App
 
         private void checkTheRegisterCredentials(object sender, RoutedEventArgs e)
         {
-            if (false)//bool wskazujący czy credentials są poprawne 
+            if (true)//bool wskazujący czy credentials są poprawne 
             {
-
+                UserDao userDao = new UserDao();
+                User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
+                //user.Login = loginBox.Text;
+                //user.Password = paswdBox.Password;
+                userDao.makePersistent(user);
             }
             else
             {
