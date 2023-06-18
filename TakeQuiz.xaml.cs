@@ -24,5 +24,13 @@ namespace Quiz_App
         {
             InitializeComponent();
         }
+
+        private void navigateToHomePage(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.NavigateToHomepage();
+            }
+        }
     }
 }
