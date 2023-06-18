@@ -25,7 +25,7 @@ namespace Quiz_App
     /// </summary>
     public partial class Register : Page
     {
-        private User User { set; get; }
+        //private User User { set; get; }
 
         public Register()
         {
@@ -47,14 +47,22 @@ namespace Quiz_App
             {
                 UserDao userDao = new UserDao();
                 User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
-                //user.Login = loginBox.Text;
-                //user.Password = paswdBox.Password;
-                userDao.makePersistent(user);
+                var isUSerSaved = userDao.saveUser(user);
+                if (isUSerSaved)
+                {
+                    showUserSavedPopup();
+                }
             }
             else
             {
                 showTheCredentialsError();
             }
+        }
+        private async void showUserSavedPopup()
+        {
+            UserSavedPopup.IsOpen = true;
+            await Task.Delay(2000);
+            UserSavedPopup.IsOpen = false;
         }
 
         private async void showTheCredentialsError()
