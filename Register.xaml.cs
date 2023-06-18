@@ -43,9 +43,11 @@ namespace Quiz_App
 
         private void checkTheRegisterCredentials(object sender, RoutedEventArgs e)
         {
-            if (true)//bool wskazujący czy credentials są poprawne 
+            UserDao userDao = new UserDao();
+            
+            if (userDao.checkIfLoginIsAvaliable(loginBox.Text) && checkCredentials(loginBox.Text, paswdBox.Password))//bool wskazujący czy credentials są poprawne 
             {
-                UserDao userDao = new UserDao();
+               
                 User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
                 var isUSerSaved = userDao.saveUser(user);
                 if (isUSerSaved)
@@ -70,6 +72,18 @@ namespace Quiz_App
             ErrorPopup.IsOpen = true;
             await Task.Delay(2000);
             ErrorPopup.IsOpen = false;
+        }
+
+        private bool checkCredentials(string login, string password)
+        {
+            if (login.Length>=5 && password.Length>=8)
+            {
+                return true;
+            }
+            else
+            {
+                return false; 
+            }
         }
     }
 }

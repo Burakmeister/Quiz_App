@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using MySqlX.XDevAPI;
 using NHibernate;
+using NHibernate.Mapping;
 using Quiz_App.Models;
 
 namespace Quiz_App.DAOs
@@ -35,23 +36,36 @@ namespace Quiz_App.DAOs
         {
             ISession mySession = getSession();
          
-            using (ITransaction transaction = getSession().BeginTransaction())
+            using (mySession.BeginTransaction())
             {
                 try
                 {
                     mySession.Save(user);
-                    transaction.Commit();
+                    mySession.Transaction.Commit();
                     return true;
                 }
                 catch
                 {
-                    transaction.Rollback();
+                    mySession.Transaction.Rollback();
                     throw;
                 }
             }
         }
 
-
+        public bool checkIfLoginIsAvaliable(string login)
+        {
+            ISession mySession = getSession();
+            IQuery query = mySession.CreateQuery("FROM Quiz_App.Models.User u WHERE u.Login= :login");
+            query.SetParameter("login", login);
+            object obj = query.UniqueResult();
+            if (obj != null)
+            {
+                mySession.Close();
+                return false;
+            }
+            mySession.Close();
+            return true;
+        }
 
 
     }
