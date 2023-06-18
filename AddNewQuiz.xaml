@@ -84,6 +84,187 @@
                 </Border>
             </Border>
         </Popup>
+        <Popup x:Name="TimePopup" IsOpen="False" Placement="Center">
+            <Border Background="Transparent" >
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <TextBlock Text="Enter time (in sec)" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                        <TextBox x:Name="timeTextController" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Width="100" VerticalAlignment="Top" FontSize="32" FontFamily="Montserrat">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="#2B2D42"/>
+                            </TextBox.Background>
+                            <TextBox.Foreground>
+                                <SolidColorBrush Color="White"/>
+                            </TextBox.Foreground>
+                        </TextBox>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="deleteTime" 
+                                Grid.Row="0"
+                                Content="Delete"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                                Width="50">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <Button x:Name="addTime" 
+                                Grid.Row="0"
+                                Content="Add"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                                Width="50">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="NewQuestionPopup" IsOpen="False" Placement="Center">
+            <Border Background="Transparent" Width="500">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <TextBlock Text="Question:" FontSize="20" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="questionTextBox" FontSize="16" Margin="10"/>
+
+                        <TextBlock Text="Correct answer:" FontSize="20" Foreground="White" Margin="10"/>
+                        <ComboBox x:Name="correctAnswerComboBox" FontSize="16" Margin="10">
+                            <ComboBoxItem Content="A"/>
+                            <ComboBoxItem Content="B"/>
+                            <ComboBoxItem Content="C"/>
+                            <ComboBoxItem Content="D"/>
+                        </ComboBox>
+
+                        <TextBlock Text="A:" FontSize="20" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="answerATextBox" FontSize="16" Margin="10"/>
+
+                        <TextBlock Text="B:" FontSize="20" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="answerBTextBox" FontSize="16" Margin="10"/>
+
+                        <TextBlock Text="C:" FontSize="20" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="answerCTextBox" FontSize="16" Margin="10"/>
+
+                        <TextBlock Text="D:" FontSize="20" Foreground="White" Margin="10"/>
+                        <TextBox x:Name="answerDTextBox" FontSize="16" Margin="10"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="cancelQuestion" 
+                                Grid.Row="0"
+                                Content="Cancel"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                                Width="50">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <Button x:Name="submitQuestion" 
+                                Grid.Row="0"
+                                Content="Submit"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                                Width="50">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
 
 
         <Button x:Name="goBackButton" 
@@ -180,7 +361,7 @@
                 FontFamily="Montserrat"
                 Margin="10,0,0,0"
                 HorizontalAlignment="Left"
-                Click="navigateToHomepage">
+                Click="showNewQuestionPopup">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent" />
@@ -233,88 +414,5 @@
                 </Button.Style>
             </Button>
         </StackPanel>
-        <Popup x:Name="TimePopup" IsOpen="False" Placement="Center">
-            <Border Background="Transparent" >
-                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
-                    <Border.BorderBrush>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#FFFFFF" Offset="0"/>
-                            <GradientStop Color="#F8F32B" Offset="0.75"/>
-                            <GradientStop Color="#000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
-                    <StackPanel>
-                        <TextBlock Text="Enter time (in sec)" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
-                        <TextBox x:Name="timeTextController" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,10" Width="100" VerticalAlignment="Top" FontSize="32" FontFamily="Montserrat">
-                            <TextBox.Background>
-                                <SolidColorBrush Color="#2B2D42"/>
-                            </TextBox.Background>
-                            <TextBox.Foreground>
-                                <SolidColorBrush Color="White"/>
-                            </TextBox.Foreground>
-                        </TextBox>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <Button x:Name="deleteTime" 
-                                Grid.Row="0"
-                                Content="Delete"
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Montserrat"
-                                Click="refreshThisView"
-                                Width="50"> 
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Foreground" Value="DarkGray" />
-                                        <Setter Property="FontSize" Value="12" />
-                                        <Setter Property="FontWeight" Value="Medium" />
-                                        <Setter Property="FontFamily" Value="Montserrat" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-
-                            <Button x:Name="addTime" 
-                                Grid.Row="0"
-                                Content="Add"
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Montserrat"
-                                Click="refreshThisView"
-                                Width="50">
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Foreground" Value="DarkGray" />
-                                        <Setter Property="FontSize" Value="12" />
-                                        <Setter Property="FontWeight" Value="Medium" />
-                                        <Setter Property="FontFamily" Value="Montserrat" />
-                                        <Setter Property="HorizontalAlignment" Value="Right" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-
-                        </Grid>
-                    </StackPanel>
-                </Border>
-            </Border>
-        </Popup>
     </Grid>
 </Page>

@@ -93,5 +93,9 @@ namespace Quiz_App
             }
             QuestionOption.IsOpen = true;
         }
+        private void showNewQuestionPopup(object sender, RoutedEventArgs e)
+        {
+            NewQuestionPopup.IsOpen = true;
+        }
     }
 }
