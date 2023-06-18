@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Quiz_App.DAOs;
+using Quiz_App.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,8 +39,9 @@ namespace Quiz_App
 
         private void checkTheLoginCredentials(object sender, RoutedEventArgs e)
         {
+            UserDao userDao = new UserDao();
 
-            if (true)//bool wskazujący czy credentials są poprawne 
+            if (userDao.findUserByCredentials(loginBox.Text, paswdBox.Password))//bool wskazujący czy credentials są poprawne 
             {
                 if (Application.Current.MainWindow is MainWindow mainWindow)
                 {
@@ -47,7 +50,7 @@ namespace Quiz_App
             }
             else 
             {
-                //showTheCredentialsError();
+                showTheCredentialsError();
             }
         }
 

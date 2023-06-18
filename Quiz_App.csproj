@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\info.png" />
     <None Remove="images\invalid.png" />
     <None Remove="images\key-icon.png" />
     <None Remove="images\logo.png" />
@@ -22,6 +23,10 @@
 
   <ItemGroup>
     <Page Remove="images\quizlogo.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\info.png" />
   </ItemGroup>
 
   <ItemGroup>

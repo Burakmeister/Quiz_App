@@ -1,4 +1,7 @@
-﻿using Org.BouncyCastle.Asn1.BC;
+﻿using NHibernate;
+using Org.BouncyCastle.Asn1.BC;
+using Quiz_App.DAOs;
+using Quiz_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +25,8 @@ namespace Quiz_App
     /// </summary>
     public partial class Register : Page
     {
+        //private User User { set; get; }
+
         public Register()
         {
             InitializeComponent();
@@ -38,14 +43,28 @@ namespace Quiz_App
 
         private void checkTheRegisterCredentials(object sender, RoutedEventArgs e)
         {
-            if (false)//bool wskazujący czy credentials są poprawne 
+            UserDao userDao = new UserDao();
+            
+            if (userDao.checkIfLoginIsAvaliable(loginBox.Text) && checkCredentials(loginBox.Text, paswdBox.Password))//bool wskazujący czy credentials są poprawne 
             {
-
+               
+                User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
+                var isUSerSaved = userDao.saveUser(user);
+                if (isUSerSaved)
+                {
+                    showUserSavedPopup();
+                }
             }
             else
             {
                 showTheCredentialsError();
             }
+        }
+        private async void showUserSavedPopup()
+        {
+            UserSavedPopup.IsOpen = true;
+            await Task.Delay(2000);
+            UserSavedPopup.IsOpen = false;
         }
 
         private async void showTheCredentialsError()
@@ -53,6 +72,18 @@ namespace Quiz_App
             ErrorPopup.IsOpen = true;
             await Task.Delay(2000);
             ErrorPopup.IsOpen = false;
+        }
+
+        private bool checkCredentials(string login, string password)
+        {
+            if (login.Length>=5 && password.Length>=8)
+            {
+                return true;
+            }
+            else
+            {
+                return false; 
+            }
         }
     }
 }
