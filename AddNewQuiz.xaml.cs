@@ -81,5 +81,17 @@ namespace Quiz_App
         {
             TimePopup.IsOpen = true;
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) //index wybranego Quizu
+        {
+            QuestionOption.IsOpen = false;
+            ListBox listBox = (ListBox)sender;
+            int selectedIndex = listBox.SelectedIndex;
+            if (selectedIndex >= 0)
+            {
+                Console.WriteLine("Selected Index: " + selectedIndex);
+            }
+            QuestionOption.IsOpen = true;
+        }
     }
 }

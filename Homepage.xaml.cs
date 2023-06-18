@@ -62,7 +62,7 @@ namespace Quiz_App
 
         private void navigateToLoginClick(object sender, RoutedEventArgs e)
         {
-            //wyloguj użytkownika
+            //TODO: wyloguj użytkownika
 
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {

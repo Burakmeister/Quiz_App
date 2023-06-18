@@ -19,6 +19,72 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
+        <Popup x:Name="QuestionOption" IsOpen="False" Placement="MousePoint">
+            <Border Background="Transparent">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <Button x:Name="editQuestion" 
+                                Grid.Row="0"
+                                Content="Edit" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                        >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="FontFamily" Value="Montserrat" />
+                                    <Setter Property="Width" Value="65" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="deleteQuestion" 
+                                Grid.Row="0"
+                                Content="Delete" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                        >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Setter Property="FontWeight" Value="Medium" />
+                                    <Setter Property="FontFamily" Value="Montserrat" />
+                                    <Setter Property="Width" Value="65" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
+
 
         <Button x:Name="goBackButton" 
                 Grid.Row="0"
@@ -93,7 +159,7 @@
             </Button>
         </Grid>
 
-        <ListBox Grid.Row="3" Margin="10,0,10,10" ItemsSource="{Binding Questions}" Background="#2B2D42">
+        <ListBox Grid.Row="3" Margin="10,0,10,10" ItemsSource="{Binding Questions}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
