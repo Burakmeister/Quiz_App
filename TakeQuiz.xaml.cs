@@ -32,5 +32,10 @@ namespace Quiz_App
                 mainWindow.NavigateToHomepage();
             }
         }
+
+        private void showTheFinishQuizPopup(object sender, RoutedEventArgs e)
+        {
+            FinishQuizPopup.IsOpen = true;
+        }
     }
 }
