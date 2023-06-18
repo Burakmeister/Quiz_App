@@ -68,6 +68,10 @@ namespace Quiz_App
         {
             MainContent.NavigationService.Navigate(new AddNewQuiz());
         }
+        public void NavigateToTakeQuiz()
+        {
+            MainContent.NavigationService.Navigate(new TakeQuiz());
+        }
     }
 }
 

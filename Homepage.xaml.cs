@@ -117,6 +117,12 @@ namespace Quiz_App
         //    }
         //}
 
-
+        private void navigateToTakeQuizClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.NavigateToTakeQuiz();
+            }
+        }
     }
 }

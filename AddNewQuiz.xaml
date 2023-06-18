@@ -169,7 +169,7 @@
         </Popup>
 
         <Popup x:Name="NewQuestionPopup" IsOpen="False" Placement="Center">
-            <Border Background="Transparent" Width="500">
+            <Border Background="Transparent" Width="600">
                 <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
