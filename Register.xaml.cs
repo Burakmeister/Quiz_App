@@ -45,7 +45,7 @@ namespace Quiz_App
         {
             UserDao userDao = new UserDao();
             
-            if (userDao.checkIfLoginIsAvaliable(loginBox.Text) && checkCredentials(loginBox.Text, paswdBox.Password))//bool wskazujący czy credentials są poprawne 
+            if (userDao.checkIfLoginIsAvaliable(loginBox.Text) && checkPasswordCorrectness(paswdBox.Password) && checkLoginCorrectnes(loginBox.Text))//bool wskazujący czy credentials są poprawne 
             {
                
                 User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
@@ -57,8 +57,24 @@ namespace Quiz_App
             }
             else
             {
+                errorMessage.Text = "";
+                if (!userDao.checkIfLoginIsAvaliable(loginBox.Text))
+                {
+                    errorMessage.Text += "Login jest zajęty. ";
+                }
+                if (!checkPasswordCorrectness(paswdBox.Password))
+                {
+                    errorMessage.Text += "Hasło musi mieć conajmniej 8 znaków. ";
+                }
+                if (!checkLoginCorrectnes(loginBox.Text))
+                {
+                    errorMessage.Text += "Login musi mieć conajmniej 5 znaków.";
+                }
+
                 showTheCredentialsError();
             }
+          
+      
         }
         private async void showUserSavedPopup()
         {
@@ -74,15 +90,27 @@ namespace Quiz_App
             ErrorPopup.IsOpen = false;
         }
 
-        private bool checkCredentials(string login, string password)
+        private bool checkPasswordCorrectness(string password)
         {
-            if (login.Length>=5 && password.Length>=8)
+            if (password.Length>=8)
             {
                 return true;
             }
             else
             {
                 return false; 
+            }
+        }
+
+        private bool checkLoginCorrectnes(string login)
+        {
+            if (login.Length>=5)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -25,7 +25,7 @@
                         </Border.BorderBrush>
                         <StackPanel>
                             <Image Source="/images/invalid.png" Width="100" Height="130"/>
-                            <TextBlock Text="Invalid nickname or password" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,10,5,20"></TextBlock>
+                            <TextBlock x:Name="errorMessage" Text="Invalid nickname or password" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,10,5,20"></TextBlock>
                         </StackPanel>
                     </Border>
                 </Border>
