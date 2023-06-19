@@ -1,18 +1,8 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Quiz_App
 {
@@ -103,6 +93,16 @@ namespace Quiz_App
             InvalidQuestionInputPopup.IsOpen = true;
             await Task.Delay(2000);
             InvalidQuestionInputPopup.IsOpen = false;
+        }
+
+        private void showCloseQuizCreationPopup(object sender, RoutedEventArgs e)
+        {
+            CloseQuizCreationPopup.IsOpen = true;
+        }
+
+        private void hideCloseQuizCreationPopup(object sender, RoutedEventArgs e)
+        {
+            CloseQuizCreationPopup.IsOpen = false;
         }
     }
 }
