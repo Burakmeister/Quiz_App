@@ -8,6 +8,7 @@
 			<generator class="increment"/>
 		</id>
 		<property name="Content" column="Content"/>
+		<property name="CorrectAnswerId" column="CorrectAnswerId"/>
 		<set name = "Answers" table = "Answer">
 			<key column = "Question_idQuestion"/>
 			<one-to-many class = "Question"/>

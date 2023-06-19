@@ -19,8 +19,8 @@ USE `mydb` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
-  `login` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `login` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `idUser_UNIQUE` (`idUser` ASC) VISIBLE,
   UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE)
@@ -33,6 +33,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Quiz` (
   `idQuiz` INT NOT NULL AUTO_INCREMENT,
   `User_idUser` INT NOT NULL,
+  `Name` VARCHAR(100) NOT NULL,
   UNIQUE INDEX `idQuiz_UNIQUE` (`idQuiz` ASC) VISIBLE,
   PRIMARY KEY (`idQuiz`),
   INDEX `fk_Quiz_User_idx` (`User_idUser` ASC) VISIBLE,
@@ -49,7 +50,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Question` (
   `idQuestion` INT NOT NULL AUTO_INCREMENT,
-  `Content` VARCHAR(45) NOT NULL,
+  `CorrectAnswerId` INT NOT NULL,
+  `Content` VARCHAR(100) NOT NULL,
   `Quiz_idQuiz` INT NOT NULL,
   PRIMARY KEY (`idQuestion`),
   UNIQUE INDEX `idQuestion_UNIQUE` (`idQuestion` ASC) VISIBLE,
@@ -67,9 +69,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Answer` (
   `idAnswer` INT NOT NULL AUTO_INCREMENT,
-  `Content` VARCHAR(45) NOT NULL,
+  `Content` VARCHAR(256) NOT NULL,
   `Question_idQuestion` INT NOT NULL,
-  `isCorrect` TINYINT NOT NULL,
   PRIMARY KEY (`idAnswer`),
   UNIQUE INDEX `idAnswer_UNIQUE` (`idAnswer` ASC) VISIBLE,
   INDEX `fk_Answer_Question1_idx` (`Question_idQuestion` ASC) VISIBLE,
