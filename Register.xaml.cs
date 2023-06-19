@@ -60,15 +60,15 @@ namespace Quiz_App
                 errorMessage.Text = "";
                 if (!userDao.checkIfLoginIsAvaliable(loginBox.Text))
                 {
-                    errorMessage.Text += "Login jest zajęty. ";
+                    errorMessage.Text += "Login is taken. ";
                 }
                 if (!checkPasswordCorrectness(paswdBox.Password))
                 {
-                    errorMessage.Text += "Hasło musi mieć conajmniej 8 znaków. ";
+                    errorMessage.Text += "Password has to be at least 8 characters long. ";
                 }
                 if (!checkLoginCorrectnes(loginBox.Text))
                 {
-                    errorMessage.Text += "Login musi mieć conajmniej 5 znaków.";
+                    errorMessage.Text += "Login has to be at least 5 characters long.";
                 }
 
                 showTheCredentialsError();

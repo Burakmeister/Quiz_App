@@ -37,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="MySql.Data" Version="8.0.33" />
     <PackageReference Include="NHibernate" Version="5.4.2" />
   </ItemGroup>

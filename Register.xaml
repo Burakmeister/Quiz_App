@@ -105,6 +105,8 @@
                                         AlignmentX="Left"/>
                 </PasswordBox.Background>
             </PasswordBox>
+          
+
             <Button x:Name="registerButton"                          
                             BorderThickness="0"
                             Content="Register"
