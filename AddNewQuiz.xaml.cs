@@ -97,5 +97,12 @@ namespace Quiz_App
         {
             NewQuestionPopup.IsOpen = true;
         }
+
+        private async void showTheInalidQuestionInputError(object sender, RoutedEventArgs e)
+        {
+            InvalidQuestionInputPopup.IsOpen = true;
+            await Task.Delay(2000);
+            InvalidQuestionInputPopup.IsOpen = false;
+        }
     }
 }

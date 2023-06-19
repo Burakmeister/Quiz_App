@@ -240,7 +240,7 @@
                                 FontSize="12"
                                 FontWeight="Medium"
                                 FontFamily="Montserrat"
-                                Click="refreshThisView"
+                                Click="showTheInalidQuestionInputError"
                                 Width="50">
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -266,7 +266,7 @@
             </Border>
         </Popup>
 
-        <Popup>
+        <Popup x:Name="InvalidQuestionInputPopup" IsOpen="False" Placement="Center">
             <Border Background="Transparent">
                 <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
                     <Border.BorderBrush>
@@ -277,6 +277,7 @@
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     <StackPanel>
+                        <Image Source="/images/invalid.png" Width="100" Height="130"/>
                         <TextBlock Text="Form filled out incorrectly" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
                     </StackPanel>
                 </Border>
