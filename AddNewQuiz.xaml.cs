@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using Quiz_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,38 +25,38 @@ namespace Quiz_App
 
         public List<Question> Questions { get; set; }
 
-        public class Question
-        {
-            public string Name { get; set; }
+        //public class Question
+        //{
+        //    public string Name { get; set; }
 
-            public Question()
-            {
-                Name = String.Empty;
-            }
-        }
+        //    public Question()
+        //    {
+        //        Name = String.Empty;
+        //    }
+        //}
 
         public AddNewQuiz()
         {
             InitializeComponent();
             Questions = new List<Question>
             {
-                new Question { Name = "Question 1"},
-                new Question { Name = "Question 2"},
-                new Question { Name = "Question 3"},
-                new Question { Name = "Question 4"},
-                new Question { Name = "Question 5"},
-                new Question { Name = "Question 6"},
-                new Question { Name = "Question 7"},
-                new Question { Name = "Question 8"},
-                new Question { Name = "Question 9"},
-                new Question { Name = "Question 10"},
-                new Question { Name = "Question 11"},
-                new Question { Name = "Question 12"},
-                new Question { Name = "Question 13"},
-                new Question { Name = "Question 14"},
-                new Question { Name = "Question 15"},
-                new Question { Name = "Question 16"},
-                new Question { Name = "Question 17"},
+                //new Question { Name = "Question 1"},
+                //new Question { Name = "Question 2"},
+                //new Question { Name = "Question 3"},
+                //new Question { Name = "Question 4"},
+                //new Question { Name = "Question 5"},
+                //new Question { Name = "Question 6"},
+                //new Question { Name = "Question 7"},
+                //new Question { Name = "Question 8"},
+                //new Question { Name = "Question 9"},
+                //new Question { Name = "Question 10"},
+                //new Question { Name = "Question 11"},
+                //new Question { Name = "Question 12"},
+                //new Question { Name = "Question 13"},
+                //new Question { Name = "Question 14"},
+                //new Question { Name = "Question 15"},
+                //new Question { Name = "Question 16"},
+                //new Question { Name = "Question 17"},
             };
             DataContext = this;
         }
@@ -97,5 +98,12 @@ namespace Quiz_App
         {
             NewQuestionPopup.IsOpen = true;
         }
+
+        private void addQuestionToQuiz()
+        {
+
+        }
+
+
     }
 }

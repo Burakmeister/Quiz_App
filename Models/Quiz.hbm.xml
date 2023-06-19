@@ -7,6 +7,11 @@
 		<id name="Id" column="idQuiz">
 			<generator class="increment"/>
 		</id>
+		<property name="Name" column="Name"/>
+		<set name ="Questions" table="Question">
+			<key column="Quiz_idQuiz"/>
+			<one-to-many class="Quiz"/>
+		</set>
 	</class>
 
 </hibernate-mapping>
