@@ -10,13 +10,11 @@ namespace Quiz_App.Models
     {
         public virtual int Id { get; set; }
         public virtual string Content { get; set; }
-        public virtual Answer CorrectAnswer { get; set; }
         public virtual Quiz Quiz { get; set; }
         public virtual ISet<Answer> Answers { get; set; }
-        public Question(string content, Answer correctAnswer, ISet<Answer> answers)
+        public Question(string content, ISet<Answer> answers)
         {
             Content = content;
-            CorrectAnswer = correctAnswer;
             Answers = answers;
         }
         public Question() { }
@@ -24,6 +22,20 @@ namespace Quiz_App.Models
         public override string ToString()
         {
             return Content;
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj == this) return true;
+            if (obj.GetType() != typeof(Quiz)) return false;
+            Question question = obj as Question;
+            return question.Content.Equals(Content);
         }
     }
 }

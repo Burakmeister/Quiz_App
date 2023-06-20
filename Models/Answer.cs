@@ -17,6 +17,24 @@ namespace Quiz_App.Models
             Content = content;
         }
 
-        public Answer() { } 
+        public Answer() { }
+        public override string ToString()
+        {
+            return Content;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if(obj == null) return false;
+            if(obj == this) return true;
+            if(obj.GetType() != typeof(Answer)) return false;
+            Answer ans = (Answer)obj;
+            return Content.Equals(ans.Content);
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
     }
 }

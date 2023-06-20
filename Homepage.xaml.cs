@@ -104,6 +104,24 @@ namespace Quiz_App
             }
         }
 
+        private void navigateToEditQuizClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.NavigateToAddNewQuiz((Quiz)QuizesListBox.SelectedItem);
+            }
+        }
+
+        private void removeQuiz(object sender, RoutedEventArgs e)
+        {
+            QuizDao dao = new QuizDao();
+            Quiz quiz = (Quiz)QuizesListBox.SelectedItem;
+            dao.delete(quiz);
+            Quizzes.Remove(quiz);
+            QuizOption.IsOpen = false;
+            QuizesListBox.Items.Refresh();
+        }
+
 
         // kod odpowiedzialny za działanie Loaded="Page_Loaded" w Homepage.xaml 
         //private void Page_Loaded(object sender, RoutedEventArgs e)

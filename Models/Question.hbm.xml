@@ -8,8 +8,8 @@
 			<generator class="increment"/>
 		</id>
 		<property name="Content" column="Content"/>
-		<many-to-one column="Quiz_idQuiz" name="Quiz" cascade="all" />
-		<set name = "Answers" table = "answer" cascade="all">
+		<many-to-one column="Quiz_idQuiz" name="Quiz"/>
+		<set name = "Answers" table = "answer" cascade="all" lazy ="false">
 			<key column = "question_idQuestion"/>
 			<one-to-many class = "Answer"/>
 		</set>
