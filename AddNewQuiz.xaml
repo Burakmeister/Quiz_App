@@ -262,6 +262,97 @@
             </Border>
         </Popup>
 
+        <Popup x:Name="InvalidQuestionInputPopup" IsOpen="False" Placement="Center">
+            <Border Background="Transparent">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <Image Source="/images/invalid.png" Width="100" Height="130"/>
+                        <TextBlock Text="Form filled out incorrectly" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="CloseQuizCreationPopup" IsOpen="False" Placement="Center">
+            <Border Background="Transparent">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <Image Source="/images/info.png" Width="100" Height="130"/>
+                        <TextBlock Text="Are you sure you want to quit creating the quiz?" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="QuitQuizCreationButton"
+                                Content="Yes" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="navigateToHomepage"
+                        >
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="Width" Value="65" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <Button x:Name="ContinueQuizCreation" 
+                                Grid.Column="1"
+                                Content="No" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="refreshThisView"
+                        >
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="Width" Value="65" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
 
         <Button x:Name="goBackButton" 
                 Grid.Row="0"
@@ -272,7 +363,7 @@
                 FontWeight="Medium"
                 FontFamily="Montserrat"
                 Margin="10,0,0,0"
-                Click="navigateToHomepage">
+                Click="showCloseQuizCreationPopup">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="Transparent" />

@@ -1,21 +1,9 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using Org.BouncyCastle.Asn1.BC;
+﻿using Quiz_App.DAOs;
+using Quiz_App.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Quiz_App.Models;
-using Quiz_App.DAOs;
 
 namespace Quiz_App
 {
@@ -25,19 +13,20 @@ namespace Quiz_App
     public partial class Homepage : Page
     {
         public List<Quiz> Quizzes { get; set; }
+        public List<Result> Results { get; set; }
         public static User User { get; set; }
 
-        //public class Quiz
-        //{
-        //    public string Name { get; set; }
-        //    public string Date { get; set; }
+        public class Result
+        {
+            public string Name { get; set; }
+            public string Date { get; set; }
 
-        //    public Quiz()
-        //    {
-        //        Name = String.Empty;
-        //        Date = String.Empty;
-        //    }
-        //}
+            public Result()
+            {
+                Name = String.Empty;
+                Date = String.Empty;
+            }
+        }
 
         public Homepage(User user) //nie jestem pewien ale wydaję mi się że trzeba rebuildować ten widok przy każdej zmianie czyli by użytkownik zobaczył zaktualizowany widok należy ... new Homepage();
         {
@@ -53,6 +42,25 @@ namespace Quiz_App
             InitializeComponent();
             QuizDao quizDao = new QuizDao();
             Quizzes = (List<Quiz>?)quizDao.findAll();
+            Results = new List<Result>
+            {
+                new Result { Name = "Quiz 1", Date = "01.01.2021" },
+                new Result { Name = "Quiz 2", Date = "01.01.2021" },
+                new Result { Name = "Quiz 3", Date = "01.01.2021" },
+                new Result { Name = "Quiz 4", Date = "01.01.2021" },
+                new Result { Name = "Quiz 5", Date = "01.01.2021" },
+                new Result { Name = "Quiz 6", Date = "01.01.2021" },
+                new Result { Name = "Quiz 7", Date = "01.01.2021" },
+                new Result { Name = "Quiz 8", Date = "01.01.2021" },
+                new Result { Name = "Quiz 9", Date = "01.01.2021" },
+                new Result { Name = "Quiz 10", Date = "01.01.2021" },
+                new Result { Name = "Quiz 11", Date = "01.01.2021" },
+                new Result { Name = "Quiz 12", Date = "01.01.2021" },
+                new Result { Name = "Quiz 13", Date = "01.01.2021" },
+                new Result { Name = "Quiz 14", Date = "01.01.2021" },
+                new Result { Name = "Quiz 15", Date = "01.01.2021" },
+                new Result { Name = "Quiz 16", Date = "01.01.2021" },
+            };
             DataContext = this;
         }
 
@@ -119,6 +127,16 @@ namespace Quiz_App
             {
                 mainWindow.NavigateToTakeQuiz();
             }
+        }
+
+        private void showQuizResultsPopup(object sender, RoutedEventArgs e)
+        {
+            QuizResults.IsOpen = true;
+        }
+
+        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            // to do obsługa zmiany wyboru w liście wyników quizu
         }
     }
 }
