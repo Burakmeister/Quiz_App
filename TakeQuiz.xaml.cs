@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Quiz_App
 {
@@ -28,16 +29,82 @@ namespace Quiz_App
         public List<Answer> answers { get; set; }
         public int QuestionIndex = 0;
         public int points = 0;
+        public int secondsPassed = 0;
+
+        public DispatcherTimer DispatcherTimer { get; set; }
 
         public TakeQuiz(Quiz quiz)
         {
             InitializeComponent();
+
+            DispatcherTimer = new DispatcherTimer(new TimeSpan(0,0,1), DispatcherPriority.Background, t_Tick, Dispatcher.CurrentDispatcher);
+            DispatcherTimer.IsEnabled = true;
+
             TakeQuiz.Quiz = quiz;
             QuestionDao questionDao = new QuestionDao();
             questions = questionDao.findQuizQuestions(Quiz);
-
-            QuizNameTextBlock.Text = quiz.Name;
+            TimeTextBlock.Text = FormatTimer((int)quiz.TimeInMin*60);
+           QuizNameTextBlock.Text = quiz.Name;
             setAllTextblock();
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            if (secondsPassed< (Quiz.TimeInMin * 60))
+            {
+                secondsPassed++;
+                TimeTextBlock.Text = FormatTimer((int)((Quiz.TimeInMin * 60) - secondsPassed));
+                if (secondsPassed == Quiz.TimeInMin * 60)
+                {
+                    TotalScoreTextBlock.Text = points + "/" + questions.Count;
+                    FinishQuizPopup.IsOpen = true;
+                }
+            }          
+        }
+
+        private string FormatTimer(int seconds)
+        {
+            string output = "";
+            int h = seconds / 360;
+            if (h==0)
+            {
+                output+= "00:";
+            }
+            else if (h >0 && h <10)
+            {
+                output += "0" + h + ":";
+            }
+            else
+            {
+                output += h + ":";
+            }
+            int m = (seconds % 360) / 60;
+            if (m == 0)
+            {
+                output += "00:";
+            }
+            else if (m > 0 && m < 10)
+            {
+                output += "0" + m + ":";
+            }
+            else
+            {
+                output += m + ":";
+            }
+            int s = (seconds % 360) % 60;
+            if (s == 0)
+            {
+                output += "00";
+            }
+            else if (s > 0 && s < 10)
+            {
+                output += "0" + s;
+            }
+            else
+            {
+                output += s;
+            }
+            return output;
         }
 
         private void navigateToHomePage(object sender, RoutedEventArgs e)

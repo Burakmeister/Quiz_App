@@ -15,7 +15,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Popup x:Name="FinishQuizPopup" IsOpen="False" Placement="Center">
             <Border Background="Transparent" >
                 <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
@@ -118,13 +118,13 @@
 
         <TextBlock Grid.Row="1"
             x:Name="TimeTextBlock"
-            Text="1:23 / 15:00"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
+            Text="00:00:00"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
             FontSize="18"
             FontWeight="Medium"
             FontFamily="Montserrat"
-            Margin="0,0,10,0"
+            Margin="700,0,0,9"
             Foreground="#BDBB20">
         </TextBlock>
 
