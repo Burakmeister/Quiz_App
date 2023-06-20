@@ -52,17 +52,20 @@ namespace Quiz_App.DAOs
 
         public T makePersistent(T entity)
         {
-            using (ITransaction transaction = getSession().BeginTransaction())
+            ISession session = getSession();
+            using (ITransaction transaction = session.BeginTransaction())
             {
                 try
                 {
-                    getSession().Save(entity);
+                    session.SaveOrUpdate(entity);
                     transaction.Commit();
+                    session.Close();
                     return entity;
                 }
                 catch
                 {
                     transaction.Rollback();
+                    session.Close();
                     throw;
                 }
             }
@@ -70,11 +73,12 @@ namespace Quiz_App.DAOs
 
         public void delete(T entity)
         {
-            using (ITransaction transaction = getSession().BeginTransaction())
+            ISession session = getSession();
+            using (ITransaction transaction = session.BeginTransaction())
             {
                 try
                 {
-                    getSession().Delete(entity);
+                    session.Delete(entity);
                     transaction.Commit();
                 }
                 catch
@@ -83,6 +87,7 @@ namespace Quiz_App.DAOs
                     throw;
                 }
             }
+            session.Close();
         }
 
         protected ISession getSession()

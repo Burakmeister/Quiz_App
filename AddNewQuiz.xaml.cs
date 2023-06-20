@@ -120,6 +120,7 @@ namespace Quiz_App
                 }
 
                 Answer correctAnswer = (correctAnswerComboBox.SelectedItem.Equals("A")) ? answers.ElementAt(0) : (correctAnswerComboBox.SelectedItem.Equals("B") ? answers.ElementAt(1) : (correctAnswerComboBox.SelectedItem.Equals("C") ? answers.ElementAt(2) : answers.ElementAt(3)));
+                correctAnswer.IsCorrect = true;
                 Question question = new Question(questionTextBox.Text, correctAnswer, answers);
                 Questions.Add(question);  //string content, int correctAnswerId, ISet<Answer> answers
                 
