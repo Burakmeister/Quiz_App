@@ -14,6 +14,7 @@ namespace Quiz_App
     {
         public List<Quiz> Quizzes { get; set; }
         public List<Result> Results { get; set; }
+        public static User User { get; set; }
 
         public class Result
         {
@@ -27,12 +28,20 @@ namespace Quiz_App
             }
         }
 
-        public Homepage() //nie jestem pewien ale wydaję mi się że trzeba rebuildować ten widok przy każdej zmianie czyli by użytkownik zobaczył zaktualizowany widok należy ... new Homepage();
+        public Homepage(User user) //nie jestem pewien ale wydaję mi się że trzeba rebuildować ten widok przy każdej zmianie czyli by użytkownik zobaczył zaktualizowany widok należy ... new Homepage();
         {
             InitializeComponent();
             QuizDao quizDao = new QuizDao();
             Quizzes = (List<Quiz>?)quizDao.findAll();
+            Homepage.User = user;
+            DataContext = this;
+        }
 
+        public Homepage()
+        {
+            InitializeComponent();
+            QuizDao quizDao = new QuizDao();
+            Quizzes = (List<Quiz>?)quizDao.findAll();
             Results = new List<Result>
             {
                 new Result { Name = "Quiz 1", Date = "01.01.2021" },

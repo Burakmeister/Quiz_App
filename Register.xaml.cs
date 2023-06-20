@@ -48,12 +48,10 @@ namespace Quiz_App
             if (userDao.checkIfLoginIsAvaliable(loginBox.Text) && checkPasswordCorrectness(paswdBox.Password) && checkLoginCorrectnes(loginBox.Text))//bool wskazujący czy credentials są poprawne 
             {
                
-                User user = new User { Login = loginBox.Text, Password = paswdBox.Password };
-                var isUSerSaved = userDao.saveUser(user);
-                if (isUSerSaved)
-                {
-                    showUserSavedPopup();
-                }
+                User user = new User { Login = loginBox.Text, Password = paswdBox.Password};
+                userDao.makePersistent(user);
+
+                showUserSavedPopup();
             }
             else
             {

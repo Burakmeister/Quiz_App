@@ -40,12 +40,12 @@ namespace Quiz_App
         private void checkTheLoginCredentials(object sender, RoutedEventArgs e)
         {
             UserDao userDao = new UserDao();
-
-            if (userDao.findUserByCredentials(loginBox.Text, paswdBox.Password))//bool wskazujący czy credentials są poprawne 
+            User user = userDao.findUserByCredentials(loginBox.Text, paswdBox.Password);
+            if (user!=null)//bool wskazujący czy credentials są poprawne 
             {
                 if (Application.Current.MainWindow is MainWindow mainWindow)
                 {
-                    mainWindow.NavigateToHomepage();
+                    mainWindow.NavigateToHomepage(user);
                 }
             }
             else 

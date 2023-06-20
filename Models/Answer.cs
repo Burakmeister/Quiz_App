@@ -10,6 +10,13 @@ namespace Quiz_App.Models
     {
         public virtual int Id { get; set; }
         public virtual string Content { get; set; }
+        public virtual Question Question { get; set; }
         public virtual bool IsCorrect { get; set; }
+        public Answer(string content)
+        {
+            Content = content;
+        }
+
+        public Answer() { } 
     }
 }

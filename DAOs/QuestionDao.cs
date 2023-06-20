@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Quiz_App.DAOs
 {
-    public class QuizDao : GenericDAO<Quiz, long>
+    internal class QuestionDao : GenericDAO<Question, long>
     {
-
     }
 }

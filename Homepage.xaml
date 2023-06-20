@@ -297,7 +297,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Id}" Margin="5" Foreground="White"/>
+                        <TextBlock Text="{Binding Name}" Margin="5" Foreground="White"/>
                         <!--<TextBlock Text="{Binding Date}" Margin="5" Foreground="White"/>-->
                     </StackPanel>
                 </DataTemplate>
