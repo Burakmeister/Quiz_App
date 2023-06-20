@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using MySqlX.XDevAPI;
+using NHibernate;
 using NHibernate.Cfg;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,10 @@ namespace Quiz_App.DAOs
 
         public T findByID(ID id)
         {
+            ISession session = getSession();
             try
             {
-                return getSession().Load<T>(id);
+                return session.Load<T>(id);
             }
             catch
             {
@@ -40,9 +42,12 @@ namespace Quiz_App.DAOs
 
         public IList<T> findAll()
         {
+            ISession session = getSession();
             try
             {
-                return getSession().CreateCriteria(typeof(T)).List<T>();
+                IList<T> list = session.CreateCriteria(typeof(T)).List<T>();
+                session.Close();
+                return list;
             }
             catch
             {
@@ -57,7 +62,7 @@ namespace Quiz_App.DAOs
             {
                 try
                 {
-                    session.SaveOrUpdate(entity);
+                    session.Save(entity);
                     transaction.Commit();
                     session.Close();
                     return entity;
@@ -65,7 +70,26 @@ namespace Quiz_App.DAOs
                 catch
                 {
                     transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public T makeUpdate(T entity)
+        {
+            ISession session = getSession();
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                try
+                {
+                    session.Update(entity);
+                    transaction.Commit();
                     session.Close();
+                    return entity;
+                }
+                catch
+                {
+                    transaction.Rollback();
                     throw;
                 }
             }
@@ -87,12 +111,20 @@ namespace Quiz_App.DAOs
                     throw;
                 }
             }
-            session.Close();
         }
 
         protected ISession getSession()
         {
-            return mySessionFactory.OpenSession();
+            ISession session;
+            try
+            {
+                session = mySessionFactory.GetCurrentSession();
+            }
+            catch
+            {
+                session = mySessionFactory.OpenSession();
+            }
+            return session;
         }
     }
 }

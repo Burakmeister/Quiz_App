@@ -2,6 +2,7 @@
 using Quiz_App.DAOs;
 using Quiz_App.Models;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace Quiz_App
 
         public List<Question> Questions { get; set; }
         private int? time = null;
+        private Quiz? quiz = null;
+        private Question? currectQuestion = null;
 
         public AddNewQuiz()
         {
@@ -29,6 +32,20 @@ namespace Quiz_App
             Questions = new List<Question>();
             DataContext = this;
         }
+
+        public AddNewQuiz(Quiz quiz)
+        {
+            InitializeComponent();
+            this.quiz = quiz;
+            Questions = new List<Question>();
+            foreach (Question q in quiz.Questions)
+                Questions.Add(q);
+            time = quiz.TimeInMin;
+            quizNameTextBox.Text = quiz.Name;
+            DataContext = this;
+            addWholeWQuiz.Content = "Edit quiz";
+        }
+
         private void navigateToHomepage(object sender, RoutedEventArgs e)
         {
             if (e.Source.Equals(goBackButton)){
@@ -37,7 +54,22 @@ namespace Quiz_App
             {
                 // zapisuje po prostu
                 if(quizNameTextBox.Text.Length > 0) {
-                    SaveQuiz(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User, time));
+                    QuizDao dao = new QuizDao();
+                    if (this.quiz == null)
+                    {
+                        dao.makePersistent(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User, time));
+                    }
+                    else
+                    {
+                        foreach (Question q in Questions)
+                            if (!this.quiz.Questions.Contains(q))
+                            {
+                                this.quiz.Questions.Add(q);
+                            }
+                        quiz.TimeInMin = time;
+                        quiz.Name = quizNameTextBox.Text;
+                        dao.makeUpdate(this.quiz);
+                    }
                 }
                 else
                 {
@@ -52,10 +84,18 @@ namespace Quiz_App
             }
         }
 
-        private void SaveQuiz(Quiz quiz)
+        private void deleteQuestionAction(object sender, RoutedEventArgs e)
         {
-            QuizDao dao = new QuizDao();
-            dao.makePersistent(quiz);
+            // popup czy aby na pewno
+            Question q = (Question)QuestionsListBox.SelectedItem;
+            if (quiz!=null && quiz.Questions.Contains(q))
+            {
+                QuestionDao dao = new QuestionDao();
+                dao.delete(q);
+            }
+            Questions.Remove(q);
+            QuestionsListBox.Items.Refresh();
+            QuestionOption.IsOpen = false;
         }
 
         private void refreshThisView(object sender, RoutedEventArgs e)
@@ -63,6 +103,7 @@ namespace Quiz_App
             if (e.Source.Equals(deleteTime))
             {
                 time = null;
+                TimePopup.IsOpen = false;
             }else if (e.Source.Equals(addTime))
             {
                 if(timeTextController.Text.Length > 0)
@@ -80,17 +121,55 @@ namespace Quiz_App
                         return;
                     }
                 }
+            }else if (e.Source.Equals(cancelQuestion))
+            {
+                showNewQuestionPopupReset();
             }
 
-            if (Application.Current.MainWindow is MainWindow mainWindow)
+            QuestionsListBox.Items.Refresh();
+        }
+
+        private void editQuestion(object sender, RoutedEventArgs e)
+        {
+            correctAnswerComboBox.Items.Clear();
+            Question question = QuestionsListBox.SelectedItem as Question;
+            currectQuestion = question;
+            NewQuestionPopup.IsOpen = true;
+            questionTextBox.Text = question.Content;
+            int i = 0;
+            foreach(Answer ans in question.Answers)
             {
-                mainWindow.NavigateToAddNewQuiz();
+                if(ans.IsCorrect)
+                {
+                    break;
+                }
+                i++;
             }
+            correctAnswerComboBox.Items.Add("A");
+            correctAnswerComboBox.Items.Add("B");
+            answerATextBox.Text = question.Answers.ElementAt(0).Content;
+            answerBTextBox.Text = question.Answers.ElementAt(1).Content;
+            if (question.Answers.Count > 2)
+            {
+                answerCTextBox.Text = question.Answers.ElementAt(2).Content;
+                //correctAnswerComboBox.Items.Add("C");
+            }
+            else
+            {
+                answerDTextBox.IsEnabled = false;
+            }
+            if (question.Answers.Count > 3)
+            {
+                answerDTextBox.Text = question.Answers.ElementAt(3).Content;
+                //correctAnswerComboBox.Items.Add("D");
+            }
+            correctAnswerComboBox.SelectedItem = correctAnswerComboBox.Items[i];
         }
 
         private void showTheTimePopup(object sender, RoutedEventArgs e)
         {
             TimePopup.IsOpen = true;
+            timeTextController.Text = time.ToString();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) //index wybranego Quizu
@@ -106,8 +185,14 @@ namespace Quiz_App
         }
         private void showNewQuestionPopup(object sender, RoutedEventArgs e)
         {
+            correctAnswerComboBox.Items.Clear();
+            answerATextBox.Text = "";
+            answerBTextBox.Text = "";
+            answerCTextBox.Text = "";
+            answerDTextBox.Text = "";
+            questionTextBox.Text = "";
+            this.currectQuestion = null;
             NewQuestionPopup.IsOpen = true;
-            NewQuestionPopup.IsEnabled = true;
             correctAnswerComboBox.SelectedIndex = 0;
             answerCTextBox.IsEnabled = false;
             answerDTextBox.IsEnabled = false;
@@ -118,34 +203,95 @@ namespace Quiz_App
 
         private void addThisQuestion(object sender, RoutedEventArgs e)
         {
-            if(questionTextBox.Text.Length > 0 && answerATextBox.Text.Length > 0 && answerBTextBox.Text.Length > 0)
+            if (questionTextBox.Text.Length > 0 && answerATextBox.Text.Length > 0 && answerBTextBox.Text.Length > 0 && correctAnswerComboBox.SelectedItem!=null)
             {
-                ISet<Answer> answers = new HashSet<Answer>();
-                // dodawanie odpowiedzi
-                answers.Add(new Answer(answerATextBox.Text));
-                answers.Add(new Answer(answerBTextBox.Text));
-                if(answerCTextBox.Text.Length > 0)
+                if (currectQuestion != null)
                 {
-                    answers.Add(new Answer(answerCTextBox.Text));
-                }
+                    ISet<Answer> answers = new HashSet<Answer>();
+                    // dodawanie odpowiedzi
+                    answers.Add(new Answer(answerATextBox.Text));
+                    answers.Add(new Answer(answerBTextBox.Text));
+                    if (answerCTextBox.Text.Length > 0)
+                    {
+                        answers.Add(new Answer(answerCTextBox.Text));
+                    }
 
-                if (answerCTextBox.Text.Length > 0)
+                    if (answerDTextBox.Text.Length > 0)
+                    {
+                        answers.Add(new Answer(answerDTextBox.Text));
+                    }
+
+                    Answer correctAnswer = (correctAnswerComboBox.SelectedItem.Equals("A")) ? answers.ElementAt(0) : (correctAnswerComboBox.SelectedItem.Equals("B") ? answers.ElementAt(1) : (correctAnswerComboBox.SelectedItem.Equals("C") ? answers.ElementAt(2) : answers.ElementAt(3)));
+                    correctAnswer.IsCorrect = true;
+
+                    foreach (var ans in answers)
+                    {
+                        if (!currectQuestion.Answers.Contains(ans))
+                        {
+                            currectQuestion.Answers.Add(ans);
+                        }
+                    }
+                    AnswerDao dao = new AnswerDao();
+                    foreach (Answer ans in currectQuestion.Answers)
+                    {
+                        if (!answers.Contains(ans))
+                        {
+                            dao.delete(ans);
+                            currectQuestion.Answers.Remove(ans);
+                        }
+                        ans.IsCorrect = false;
+                        if (ans.Equals(correctAnswer))
+                        {
+                            ans.IsCorrect = true;
+                        }
+                    }
+
+                    currectQuestion.Content = questionTextBox.Text;
+
+                    showNewQuestionPopupReset();
+                }
+                else
                 {
-                    answers.Add(new Answer(answerDTextBox.Text));
-                }
 
-                Answer correctAnswer = (correctAnswerComboBox.SelectedItem.Equals("A")) ? answers.ElementAt(0) : (correctAnswerComboBox.SelectedItem.Equals("B") ? answers.ElementAt(1) : (correctAnswerComboBox.SelectedItem.Equals("C") ? answers.ElementAt(2) : answers.ElementAt(3)));
-                correctAnswer.IsCorrect = true;
-                Question question = new Question(questionTextBox.Text, correctAnswer, answers);
-                Questions.Add(question);  //string content, int correctAnswerId, ISet<Answer> answers
-                
-                NewQuestionPopup.IsOpen = false;
-                QuestionsListBox.Items.Refresh();
+                    ISet<Answer> answers = new HashSet<Answer>();
+                    // dodawanie odpowiedzi
+                    answers.Add(new Answer(answerATextBox.Text));
+                    answers.Add(new Answer(answerBTextBox.Text));
+                    if (answerCTextBox.Text.Length > 0)
+                    {
+                        answers.Add(new Answer(answerCTextBox.Text));
+                    }
+
+                    if (answerDTextBox.Text.Length > 0)
+                    {
+                        answers.Add(new Answer(answerDTextBox.Text));
+                    }
+
+                    Answer correctAnswer = (correctAnswerComboBox.SelectedItem.Equals("A")) ? answers.ElementAt(0) : (correctAnswerComboBox.SelectedItem.Equals("B") ? answers.ElementAt(1) : (correctAnswerComboBox.SelectedItem.Equals("C") ? answers.ElementAt(2) : answers.ElementAt(3)));
+                    correctAnswer.IsCorrect = true;
+                    Question question = new Question(questionTextBox.Text, answers);
+                    Questions.Add(question);  //string content, int correctAnswerId, ISet<Answer> answers
+                    showNewQuestionPopupReset();
+
+                }
             }
             else
             {
                 // komunikat o nieprawidłopwym wypełnieniu formularza
             }
+        }
+
+        private void showNewQuestionPopupReset()
+        {
+            NewQuestionPopup.IsOpen = false;
+            QuestionsListBox.Items.Refresh();
+            NewQuestionPopup.IsOpen = false;
+            answerATextBox.Text = null;
+            answerBTextBox.Text = null;
+            answerCTextBox.Text = null;
+            answerDTextBox.Text = null;
+            correctAnswerComboBox.Items.Clear();
+            questionTextBox.Text = null;
         }
 
         private void onChangedAnswerText(object sender, EventArgs e)    // zmiana listy właściwych odpowiedzi oraz zmiana wyświetlania pól w zależności od liczby wprowadzonych odpowiedzi

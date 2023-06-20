@@ -30,5 +30,7 @@ namespace Quiz_App.Models
         {
             return Name;
         }
+
+
     }
 }
