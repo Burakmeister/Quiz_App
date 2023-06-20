@@ -3,9 +3,11 @@ using Quiz_App.DAOs;
 using Quiz_App.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace Quiz_App
 
@@ -19,6 +21,7 @@ namespace Quiz_App
     {
 
         public List<Question> Questions { get; set; }
+        private int? time = null;
 
         public AddNewQuiz()
         {
@@ -34,7 +37,7 @@ namespace Quiz_App
             {
                 // zapisuje po prostu
                 if(quizNameTextBox.Text.Length > 0) {
-                    SaveQuiz(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User));
+                    SaveQuiz(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User, time));
                 }
                 else
                 {
@@ -57,6 +60,27 @@ namespace Quiz_App
 
         private void refreshThisView(object sender, RoutedEventArgs e)
         {
+            if (e.Source.Equals(deleteTime))
+            {
+                time = null;
+            }else if (e.Source.Equals(addTime))
+            {
+                if(timeTextController.Text.Length > 0)
+                {
+                    try
+                    {
+                        int result = Int32.Parse(timeTextController.Text);
+                        time = result;
+                        TimePopup.IsOpen = false;
+                        return;
+                    }
+                    catch (FormatException)
+                    {
+                        // popup nie wprowadzono czasu
+                        return;
+                    }
+                }
+            }
 
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {

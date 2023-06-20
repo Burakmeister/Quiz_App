@@ -11,7 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb3 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `idUser_UNIQUE` (`idUser` ASC) VISIBLE,
   UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -34,13 +36,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`quiz` (
   `idQuiz` INT NOT NULL AUTO_INCREMENT,
   `User_idUser` INT NOT NULL,
   `Name` VARCHAR(100) NOT NULL,
+  `time` INT NULL DEFAULT NULL,
   PRIMARY KEY (`idQuiz`),
   UNIQUE INDEX `idQuiz_UNIQUE` (`idQuiz` ASC) VISIBLE,
   INDEX `fk_Quiz_User_idx` (`User_idUser` ASC) VISIBLE,
   CONSTRAINT `fk_Quiz_User`
     FOREIGN KEY (`User_idUser`)
     REFERENCES `mydb`.`user` (`idUser`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -56,7 +61,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`question` (
   CONSTRAINT `fk_Question_Quiz1`
     FOREIGN KEY (`Quiz_idQuiz`)
     REFERENCES `mydb`.`quiz` (`idQuiz`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -66,16 +73,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`answer` (
   `idAnswer` INT NOT NULL AUTO_INCREMENT,
   `Content` VARCHAR(256) NOT NULL,
   `IsCorrect` TINYINT NOT NULL,
-  `question_idQuestion` INT NOT NULL,
+  `question_idQuestion` INT NULL DEFAULT NULL,
   PRIMARY KEY (`idAnswer`),
   UNIQUE INDEX `idAnswer_UNIQUE` (`idAnswer` ASC) VISIBLE,
   INDEX `fk_answer_question1_idx` (`question_idQuestion` ASC) VISIBLE,
   CONSTRAINT `fk_answer_question1`
     FOREIGN KEY (`question_idQuestion`)
-    REFERENCES `mydb`.`question` (`idQuestion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    REFERENCES `mydb`.`question` (`idQuestion`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -91,7 +98,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`result` (
   CONSTRAINT `fk_Result_Quiz1`
     FOREIGN KEY (`Quiz_idQuiz`)
     REFERENCES `mydb`.`quiz` (`idQuiz`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
