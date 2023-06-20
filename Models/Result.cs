@@ -10,5 +10,6 @@ namespace Quiz_App.Models
     {
         public virtual int Id { get; set; }
         public virtual int Score { get; set; }
+        public virtual Quiz Quiz { get; set; }
     }
 }

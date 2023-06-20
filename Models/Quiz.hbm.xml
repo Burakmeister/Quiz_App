@@ -9,15 +9,15 @@
 		</id>
 		<property name="Name" column="Name"/>
 		<property name="TimeInMin" column="time"/>
-		<many-to-one column="User_idUser" name="User" class="User"/>
+		<many-to-one column="User_idUser" name="User" class="User" lazy="false"/>
 
-		<set name ="Questions" table="Question" cascade="all">
+		<set name ="Questions" table="Question" cascade="all" lazy="false">
 			<key column="Quiz_idQuiz"/>
 			<one-to-many class="Question"/>
 		</set>
-		<set name ="Scores" table="Result">
+		<set name ="Scores" table="Result" cascade="all" lazy="false">
 			<key column="Quiz_idQuiz"/>
-			<one-to-many class="Quiz"/>
+			<one-to-many class="Result"/>
 		</set>
 	</class>
 

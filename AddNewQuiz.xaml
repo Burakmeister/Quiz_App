@@ -30,13 +30,13 @@
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     <StackPanel>
-                        <Button x:Name="editQuestion" 
+                        <Button x:Name="saveQuestion" 
                                 Grid.Row="0"
                                 Content="Edit" 
                                 FontSize="12"
                                 FontWeight="Medium"
                                 FontFamily="Montserrat"
-                                Click="refreshThisView"
+                                Click="editQuestion"
                         >
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -61,7 +61,7 @@
                                 FontSize="12"
                                 FontWeight="Medium"
                                 FontFamily="Montserrat"
-                                Click="refreshThisView"
+                                Click="deleteQuestionAction"
                         >
                             <Button.Style>
                                 <Style TargetType="Button">
