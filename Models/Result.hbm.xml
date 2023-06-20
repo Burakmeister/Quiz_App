@@ -3,13 +3,11 @@
                    assembly="Quiz_App"
                    namespace="Quiz_App.Models">
 
-	<class name="Answer">
-		<id name="Id" column="idAnswer">
+	<class name="Result">
+		<id name="Id" column="idResult">
 			<generator class="increment"/>
 		</id>
-		<property name="Content" column="Content"/>
-		<property name="IsCorrect" column="IsCorrect"/>
-		<many-to-one name="Question" column="question_idQuestion" cascade="all"/>
+		<property name="Score" column="result"/>
 	</class>
 
 </hibernate-mapping>

@@ -18,6 +18,7 @@
     <None Remove="Models\Answer.hbm.xml" />
     <None Remove="Models\Question.hbm.xml" />
     <None Remove="Models\Quiz.hbm.xml" />
+    <None Remove="Models\Result.hbm.xml" />
     <None Remove="Models\User.hbm.xml" />
   </ItemGroup>
 
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Models\Result.hbm.xml" />
     <EmbeddedResource Include="Models\Answer.hbm.xml" />
     <EmbeddedResource Include="Models\Quiz.hbm.xml" />
     <EmbeddedResource Include="Models\Question.hbm.xml" />

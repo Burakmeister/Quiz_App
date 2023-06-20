@@ -11,12 +11,22 @@ namespace Quiz_App.Models
         public virtual int Id { get; set; }
 
         public virtual string Name { get; set; }
+        public virtual User User { get; set; }
 
         public virtual ISet<Question> Questions { get; set; }
+        public virtual ISet<Result> Scores { get; set; }
+
+        public Quiz() { }
+        public Quiz(string name, ISet<Question> questions, User user)
+        {
+            Name = name;
+            Questions = questions;
+            User = user;
+        }
 
         public override String ToString()
         {
-            return "Quiz " + Id;
+            return Name;
         }
     }
 }

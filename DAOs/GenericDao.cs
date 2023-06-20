@@ -3,17 +3,16 @@ using NHibernate.Cfg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Quiz_App.DAOs
 {
     public abstract class GenericDAO<T, ID>
     {
-
-        private Configuration myConfiguration;
-        private ISessionFactory mySessionFactory;
-        private ISession mySession;
+        private readonly ISessionFactory mySessionFactory = new Configuration().Configure().BuildSessionFactory();
 
         public T findByID(ID id)
         {
@@ -88,16 +87,7 @@ namespace Quiz_App.DAOs
 
         protected ISession getSession()
         {
-
-            // to do: check if session is openned
-
-            myConfiguration = new Configuration();
-            myConfiguration.Configure();
-            mySessionFactory = myConfiguration.BuildSessionFactory();
-            mySession = mySessionFactory.OpenSession();
-
-            return mySession;
+            return mySessionFactory.OpenSession();
         }
-
     }
 }

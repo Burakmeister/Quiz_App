@@ -64,6 +64,11 @@ namespace Quiz_App
             MainContent.NavigationService.Navigate(new Homepage());
         }
 
+        public void NavigateToHomepage(User user)
+        {
+            MainContent.NavigationService.Navigate(new Homepage(user));
+        }
+
         public void NavigateToAddNewQuiz()
         {
             MainContent.NavigationService.Navigate(new AddNewQuiz());
