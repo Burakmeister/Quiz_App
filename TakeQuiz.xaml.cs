@@ -30,7 +30,7 @@ namespace Quiz_App
         public int QuestionIndex = 0;
         public int points = 0;
         public int secondsPassed = 0;
-
+        private static Random random;
         public DispatcherTimer DispatcherTimer { get; set; }
 
         public TakeQuiz(Quiz quiz)
@@ -43,6 +43,10 @@ namespace Quiz_App
             TakeQuiz.Quiz = quiz;
             QuestionDao questionDao = new QuestionDao();
             questions = questionDao.findQuizQuestions(Quiz);
+
+            // shuffle questions
+            random = new Random();
+            questions = questions.OrderBy(a=>random.Next()).ToList();
             TimeTextBlock.Text = FormatTimer((int)quiz.TimeInMin*60);
            QuizNameTextBlock.Text = quiz.Name;
             setAllTextblock();
@@ -65,7 +69,7 @@ namespace Quiz_App
         private string FormatTimer(int seconds)
         {
             string output = "";
-            int h = seconds / 360;
+            int h = seconds / 3600;
             if (h==0)
             {
                 output+= "00:";
@@ -78,7 +82,7 @@ namespace Quiz_App
             {
                 output += h + ":";
             }
-            int m = (seconds % 360) / 60;
+            int m = (seconds % 3600) / 60;
             if (m == 0)
             {
                 output += "00:";
@@ -168,9 +172,22 @@ namespace Quiz_App
 
             AnswerDao answerDao = new AnswerDao();
             answers = answerDao.findQuestionAnswers(questions.ElementAt(QuestionIndex));
+
+            // shuffle answers
+
+            answers = answers.OrderBy(a => random.Next()).ToList();
+
             for (int i = 0; i < answers.Count; i++)
             {
-                RadioButton AnswerRadioButton = new RadioButton() { Content = answers.ElementAt(i).Content, GroupName = "AnswerOptions" , IsChecked = false, Margin = new Thickness(50,10,50,0), HorizontalAlignment = HorizontalAlignment.Left, FontSize = 16 ,Visibility = Visibility.Visible};
+                RadioButton AnswerRadioButton;
+                if (i == 0)
+                {
+                    AnswerRadioButton = new RadioButton() { Content = answers.ElementAt(i).Content, GroupName = "AnswerOptions", IsChecked = true, Margin = new Thickness(50, 10, 50, 0), HorizontalAlignment = HorizontalAlignment.Left, FontSize = 16, Visibility = Visibility.Visible };
+                }
+                else
+                {
+                    AnswerRadioButton = new RadioButton() { Content = answers.ElementAt(i).Content, GroupName = "AnswerOptions", IsChecked = false, Margin = new Thickness(50, 10, 50, 0), HorizontalAlignment = HorizontalAlignment.Left, FontSize = 16, Visibility = Visibility.Visible };
+                }
                 AnswersStackPanel.Children.Add(AnswerRadioButton);
             }
         }
