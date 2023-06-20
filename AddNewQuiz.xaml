@@ -184,23 +184,19 @@
 
                         <TextBlock Text="Correct answer:" FontSize="20" Foreground="White" Margin="10"/>
                         <ComboBox x:Name="correctAnswerComboBox" FontSize="16" Margin="10">
-                            <ComboBoxItem Content="A"/>
-                            <ComboBoxItem Content="B"/>
-                            <ComboBoxItem Content="C"/>
-                            <ComboBoxItem Content="D"/>
                         </ComboBox>
 
-                        <TextBlock Text="A:" FontSize="20" Foreground="White" Margin="10"/>
-                        <TextBox x:Name="answerATextBox" FontSize="16" Margin="10"/>
+                        <TextBlock Text="A:" FontSize="20" Foreground="White" Margin="10" />
+                        <TextBox x:Name="answerATextBox" FontSize="16" Margin="10" TextChanged="onChangedAnswerText"/>
 
                         <TextBlock Text="B:" FontSize="20" Foreground="White" Margin="10"/>
-                        <TextBox x:Name="answerBTextBox" FontSize="16" Margin="10"/>
+                        <TextBox x:Name="answerBTextBox" FontSize="16" Margin="10" TextChanged="onChangedAnswerText"/>
 
-                        <TextBlock Text="C:" FontSize="20" Foreground="White" Margin="10"/>
-                        <TextBox x:Name="answerCTextBox" FontSize="16" Margin="10"/>
+                        <TextBlock Text="C:" FontSize="20" Foreground="White" Margin="10" />
+                        <TextBox x:Name="answerCTextBox" FontSize="16" Margin="10" TextChanged="onChangedAnswerText"/>
 
                         <TextBlock Text="D:" FontSize="20" Foreground="White" Margin="10"/>
-                        <TextBox x:Name="answerDTextBox" FontSize="16" Margin="10"/>
+                        <TextBox x:Name="answerDTextBox" FontSize="16" Margin="10" TextChanged="onChangedAnswerText"/>
 
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
@@ -240,7 +236,7 @@
                                 FontSize="12"
                                 FontWeight="Medium"
                                 FontFamily="Montserrat"
-                                Click="refreshThisView"
+                                Click="addThisQuestion"
                                 Width="50">
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -340,11 +336,11 @@
             </Button>
         </Grid>
 
-        <ListBox Grid.Row="3" Margin="10,0,10,10" ItemsSource="{Binding Questions}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged">
+        <ListBox Name="QuestionsListBox" Grid.Row="3" Margin="10,0,10,10" ItemsSource="{Binding Questions}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Name}" Margin="5" Foreground="White"/>
+                        <TextBlock Text="{Binding Content}" Margin="5" Foreground="White"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -3,17 +3,16 @@ using NHibernate.Cfg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Quiz_App.DAOs
 {
     public abstract class GenericDAO<T, ID>
     {
-
-        private Configuration myConfiguration;
-        private ISessionFactory mySessionFactory;
-        private ISession mySession;
+        private readonly ISessionFactory mySessionFactory = new Configuration().Configure().BuildSessionFactory();
 
         public T findByID(ID id)
         {
@@ -53,17 +52,20 @@ namespace Quiz_App.DAOs
 
         public T makePersistent(T entity)
         {
-            using (ITransaction transaction = getSession().BeginTransaction())
+            ISession session = getSession();
+            using (ITransaction transaction = session.BeginTransaction())
             {
                 try
                 {
-                    getSession().Save(entity);
+                    session.SaveOrUpdate(entity);
                     transaction.Commit();
+                    session.Close();
                     return entity;
                 }
                 catch
                 {
                     transaction.Rollback();
+                    session.Close();
                     throw;
                 }
             }
@@ -71,11 +73,12 @@ namespace Quiz_App.DAOs
 
         public void delete(T entity)
         {
-            using (ITransaction transaction = getSession().BeginTransaction())
+            ISession session = getSession();
+            using (ITransaction transaction = session.BeginTransaction())
             {
                 try
                 {
-                    getSession().Delete(entity);
+                    session.Delete(entity);
                     transaction.Commit();
                 }
                 catch
@@ -84,20 +87,12 @@ namespace Quiz_App.DAOs
                     throw;
                 }
             }
+            session.Close();
         }
 
         protected ISession getSession()
         {
-
-            // to do: check if session is openned
-
-            myConfiguration = new Configuration();
-            myConfiguration.Configure();
-            mySessionFactory = myConfiguration.BuildSessionFactory();
-            mySession = mySessionFactory.OpenSession();
-
-            return mySession;
+            return mySessionFactory.OpenSession();
         }
-
     }
 }
