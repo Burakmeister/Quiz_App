@@ -17,7 +17,7 @@
 		</set>
 		<set name ="Scores" table="Result">
 			<key column="Quiz_idQuiz"/>
-			<one-to-many class="Quiz"/>
+			<one-to-many class="Result"/>
 		</set>
 	</class>
 

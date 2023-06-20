@@ -40,9 +40,13 @@ namespace Quiz_App.DAOs
 
         public IList<T> findAll()
         {
+            ISession session = getSession();
             try
             {
-                return getSession().CreateCriteria(typeof(T)).List<T>();
+                IList < T > list = session.CreateCriteria(typeof(T)).List<T>();
+           
+                session.Close();
+                return list;
             }
             catch
             {
