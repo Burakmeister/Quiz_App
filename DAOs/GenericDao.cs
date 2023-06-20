@@ -45,7 +45,9 @@ namespace Quiz_App.DAOs
             ISession session = getSession();
             try
             {
+
                 IList<T> list = session.CreateCriteria(typeof(T)).List<T>();
+
                 session.Close();
                 return list;
             }

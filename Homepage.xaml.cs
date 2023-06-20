@@ -143,7 +143,7 @@ namespace Quiz_App
         {
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {
-                mainWindow.NavigateToTakeQuiz();
+                mainWindow.NavigateToTakeQuiz((Quiz)QuizesListBox.SelectedItem);
             }
         }
 
