@@ -105,31 +105,6 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button x:Name="printAQuiz" 
-                                Grid.Row="0"
-                                Content="Print" 
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Montserrat"
-                                Click="refreshHomepage"
-                        >
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="Foreground" Value="DarkGray" />
-                                    <Setter Property="FontSize" Value="12" />
-                                    <Setter Property="FontWeight" Value="Medium" />
-                                    <Setter Property="FontFamily" Value="Montserrat" />
-                                    <Setter Property="Width" Value="65" />
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="Foreground" Value="White" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
                         <Button x:Name="viewResult"
                                 Grid.Row="0"
                                 Content="Results"
@@ -178,11 +153,11 @@
                         <TextBlock Text="Results" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Foreground="White" FontSize="32" FontWeight="Medium" FontFamily="Montserrat"/>
                         
                            
-                            <ListBox Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding Results}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged_1">
+                            <ListBox Name="ResultsListBox" Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding Results}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged_1">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Name}" Margin="5" Foreground="White"/>
+                                            <TextBlock Text="{Binding Percentage}" Margin="5" Foreground="White"/>
                                             <!--<TextBlock Text="{Binding Date}" Margin="5" Foreground="White"/>-->
                                         </StackPanel>
                                     </DataTemplate>

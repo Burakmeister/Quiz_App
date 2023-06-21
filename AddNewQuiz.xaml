@@ -9,7 +9,6 @@
       Title="AddNewQuiz">
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="40"/>
@@ -18,6 +17,98 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
+
+        <Popup x:Name="DeletingCorfirmation" IsOpen="False" Placement="Center">
+            <Border Background="Transparent">
+                <Border Background="#2B2D42" BorderThickness="2" Opacity="0.95">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F32B" Offset="0.75"/>
+                            <GradientStop Color="#000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel>
+                        <Image Source="/images/info.png" Width="100" Height="130"/>
+                        <TextBlock Text="Are you sure you want to delete question?" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="QuitQuestionDeleting"
+                                Content="Yes" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="deleteQuestion"
+                        >
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="Width" Value="65" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <Button x:Name="ContinueQuestionDeleting" 
+                                Grid.Column="1"
+                                Content="No" 
+                                FontSize="12"
+                                FontWeight="Medium"
+                                FontFamily="Montserrat"
+                                Click="deleteQuestionResignation"
+                        >
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="DarkGray" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Montserrat" />
+                                        <Setter Property="Width" Value="65" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Popup>
+        
+        <Popup x:Name="ErrorTime" IsOpen="False" Placement="Center">
+            <Border Background="#2B2D42">
+                <StackPanel>
+                    <Image Source="/images/invalid.png" Width="100" Height="130"/>
+                    <TextBlock Text="Enter correct time" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="ErrorIncorrectlyCompletedForm" IsOpen="False" Placement="Center">
+            <Border Background="#2B2D42">
+                <StackPanel>
+                    <Image Source="/images/invalid.png" Width="100" Height="130"/>
+                    <TextBlock Text="Incorrectly completed form" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                </StackPanel>
+            </Border>
+        </Popup>
 
         <Popup x:Name="QuestionOption" IsOpen="False" Placement="MousePoint">
             <Border Background="Transparent">
@@ -55,7 +146,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button x:Name="deleteQuestion" 
+                        <Button x:Name="deleteQuestionConfirmation" 
                                 Grid.Row="0"
                                 Content="Delete" 
                                 FontSize="12"
@@ -292,44 +383,18 @@
                     </Border.BorderBrush>
                     <StackPanel>
                         <Image Source="/images/info.png" Width="100" Height="130"/>
-                        <TextBlock Text="Are you sure you want to quit creating the quiz?" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
+                        <TextBlock Text="Changes saved" FontSize="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"></TextBlock>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <Button x:Name="QuitQuizCreationButton"
-                                Content="Yes" 
+                                Content="Ok" 
                                 FontSize="12"
                                 FontWeight="Medium"
                                 FontFamily="Montserrat"
                                 Click="navigateToHomepage"
-                        >
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Foreground" Value="DarkGray" />
-                                        <Setter Property="FontSize" Value="12" />
-                                        <Setter Property="FontWeight" Value="Medium" />
-                                        <Setter Property="FontFamily" Value="Montserrat" />
-                                        <Setter Property="Width" Value="65" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-
-                            <Button x:Name="ContinueQuizCreation" 
-                                Grid.Column="1"
-                                Content="No" 
-                                FontSize="12"
-                                FontWeight="Medium"
-                                FontFamily="Montserrat"
-                                Click="refreshThisView"
                         >
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -354,35 +419,6 @@
             </Border>
         </Popup>
 
-        <Button x:Name="goBackButton" 
-                Grid.Row="0"
-                Content="Go back"
-                HorizontalContentAlignment="Left" 
-                VerticalContentAlignment="Center" 
-                FontSize="12"
-                FontWeight="Medium"
-                FontFamily="Montserrat"
-                Margin="10,0,0,0"
-                Click="showCloseQuizCreationPopup">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="DarkGray" />
-                    <Setter Property="FontSize" Value="12" />
-                    <Setter Property="FontWeight" Value="Medium" />
-                    <Setter Property="FontFamily" Value="Montserrat" />
-                    <Setter Property="Margin" Value="0,10,0,0" />
-                    <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="VerticalAlignment" Value="Top" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="White" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
         <Image Grid.Row="0" Source="/images/logo.png" Width="100" Height="100" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Top"/>
         <TextBlock Grid.Row="1" Text="Quiz name: " HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Foreground="White" FontSize="32" FontWeight="Medium" FontFamily="Montserrat"/>
         <Grid Grid.Row="2">
@@ -472,7 +508,7 @@
         <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="addWholeWQuiz" 
                 Grid.Row="0"
-                Content="Add quiz"
+                Content="Go back"
                 HorizontalContentAlignment="Left" 
                 VerticalContentAlignment="Center" 
                 FontSize="24"
@@ -480,7 +516,7 @@
                 FontFamily="Montserrat"
                 Margin="10,0,10,0"
                 HorizontalAlignment="Left"
-                Click="navigateToHomepage">
+                Click="showCloseQuizCreationPopup">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent" />

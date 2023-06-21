@@ -31,6 +31,9 @@ namespace Quiz_App.Models
             return Name;
         }
 
-
+        public static implicit operator List<object>(Quiz v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

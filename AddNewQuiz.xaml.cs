@@ -43,41 +43,10 @@ namespace Quiz_App
             time = quiz.TimeInMin;
             quizNameTextBox.Text = quiz.Name;
             DataContext = this;
-            addWholeWQuiz.Content = "Edit quiz";
         }
 
         private void navigateToHomepage(object sender, RoutedEventArgs e)
         {
-            if (e.Source.Equals(goBackButton)){
-                // popup czy aby na pewno, czy wolisz zapisać
-            }else if (e.Source.Equals(addWholeWQuiz))
-            {
-                // zapisuje po prostu
-                if(quizNameTextBox.Text.Length > 0) {
-                    QuizDao dao = new QuizDao();
-                    if (this.quiz == null)
-                    {
-                        dao.makePersistent(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User, time));
-                    }
-                    else
-                    {
-                        foreach (Question q in Questions)
-                            if (!this.quiz.Questions.Contains(q))
-                            {
-                                this.quiz.Questions.Add(q);
-                            }
-                        quiz.TimeInMin = time;
-                        quiz.Name = quizNameTextBox.Text;
-                        dao.makeUpdate(this.quiz);
-                    }
-                }
-                else
-                {
-                    // popup czemu nie ma nazwy elo
-                    return;
-                }
-            }
-
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {
                 mainWindow.NavigateToHomepage();
@@ -86,9 +55,17 @@ namespace Quiz_App
 
         private void deleteQuestionAction(object sender, RoutedEventArgs e)
         {
-            // popup czy aby na pewno
+            DeletingCorfirmation.IsOpen = true;
+        }
+        private void deleteQuestionResignation(object sender, RoutedEventArgs e)
+        {
+            DeletingCorfirmation.IsOpen = false;
+        }
+
+        private void deleteQuestion(object sender, RoutedEventArgs e)
+        {
             Question q = (Question)QuestionsListBox.SelectedItem;
-            if (quiz!=null && quiz.Questions.Contains(q))
+            if (quiz != null && quiz.Questions.Contains(q))
             {
                 QuestionDao dao = new QuestionDao();
                 dao.delete(q);
@@ -96,6 +73,7 @@ namespace Quiz_App
             Questions.Remove(q);
             QuestionsListBox.Items.Refresh();
             QuestionOption.IsOpen = false;
+            DeletingCorfirmation.IsOpen = false;
         }
 
         private void refreshThisView(object sender, RoutedEventArgs e)
@@ -117,9 +95,13 @@ namespace Quiz_App
                     }
                     catch (FormatException)
                     {
-                        // popup nie wprowadzono czasu
+                        showTimePopup();
                         return;
                     }
+                }
+                else
+                {
+                    showTimePopup();
                 }
             }else if (e.Source.Equals(cancelQuestion))
             {
@@ -152,7 +134,6 @@ namespace Quiz_App
             if (question.Answers.Count > 2)
             {
                 answerCTextBox.Text = question.Answers.ElementAt(2).Content;
-                //correctAnswerComboBox.Items.Add("C");
             }
             else
             {
@@ -161,7 +142,6 @@ namespace Quiz_App
             if (question.Answers.Count > 3)
             {
                 answerDTextBox.Text = question.Answers.ElementAt(3).Content;
-                //correctAnswerComboBox.Items.Add("D");
             }
             correctAnswerComboBox.SelectedItem = correctAnswerComboBox.Items[i];
         }
@@ -207,6 +187,7 @@ namespace Quiz_App
             {
                 if (currectQuestion != null)
                 {
+                    // usuń resulty z tego wyścigu po edycji
                     ISet<Answer> answers = new HashSet<Answer>();
                     // dodawanie odpowiedzi
                     answers.Add(new Answer(answerATextBox.Text));
@@ -270,14 +251,14 @@ namespace Quiz_App
                     Answer correctAnswer = (correctAnswerComboBox.SelectedItem.Equals("A")) ? answers.ElementAt(0) : (correctAnswerComboBox.SelectedItem.Equals("B") ? answers.ElementAt(1) : (correctAnswerComboBox.SelectedItem.Equals("C") ? answers.ElementAt(2) : answers.ElementAt(3)));
                     correctAnswer.IsCorrect = true;
                     Question question = new Question(questionTextBox.Text, answers);
-                    Questions.Add(question);  //string content, int correctAnswerId, ISet<Answer> answers
+                    Questions.Add(question); 
                     showNewQuestionPopupReset();
 
                 }
             }
             else
             {
-                // komunikat o nieprawidłopwym wypełnieniu formularza
+                showErrorIncorrectlyCompletedForm();
             }
         }
 
@@ -348,6 +329,20 @@ namespace Quiz_App
             }
         }
 
+        private async void showTimePopup()
+        {
+            ErrorTime.IsOpen = true;
+            await Task.Delay(2000);
+            ErrorTime.IsOpen = false;
+        }
+
+        private async void showErrorIncorrectlyCompletedForm()
+        {
+            InvalidQuestionInputPopup.IsOpen = true;
+            await Task.Delay(2000);
+            InvalidQuestionInputPopup.IsOpen = false;
+        }
+
         private async void showTheInalidQuestionInputError(object sender, RoutedEventArgs e)
         {
             InvalidQuestionInputPopup.IsOpen = true;
@@ -357,6 +352,30 @@ namespace Quiz_App
 
         private void showCloseQuizCreationPopup(object sender, RoutedEventArgs e)
         {
+            if (quizNameTextBox.Text.Length > 0)
+            {
+                QuizDao dao = new QuizDao();
+                if (this.quiz == null)
+                {
+                    dao.makePersistent(new Quiz(quizNameTextBox.Text, new HashSet<Question>(Questions), Homepage.User, time));
+                }
+                else
+                {
+                    foreach (Question q in Questions)
+                        if (!this.quiz.Questions.Contains(q))
+                        {
+                            this.quiz.Questions.Add(q);
+                        }
+                    quiz.TimeInMin = time;
+                    quiz.Name = quizNameTextBox.Text;
+                    dao.makeUpdate(this.quiz);
+                }
+            }
+            else
+            {
+                // popup czemu nie ma nazwy elo
+                return;
+            }
             CloseQuizCreationPopup.IsOpen = true;
         }
 
