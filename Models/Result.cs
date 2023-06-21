@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Quiz_App.Models
 {
@@ -18,6 +19,11 @@ namespace Quiz_App.Models
         {
             Score = score;
             Quiz = quiz;
+        }
+
+        public override String ToString()
+        {
+            return "Points " + Score.ToString();
         }
     }
 }

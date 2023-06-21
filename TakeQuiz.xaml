@@ -118,13 +118,13 @@
 
         <TextBlock Grid.Row="1"
             x:Name="TimeTextBlock"
-            Text="00:00:00"
+            Text=""
             HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             FontSize="18"
             FontWeight="Medium"
             FontFamily="Montserrat"
-            Margin="700,0,0,9"
+            Margin="700,9,0,0"
             Foreground="#BDBB20">
         </TextBlock>
 

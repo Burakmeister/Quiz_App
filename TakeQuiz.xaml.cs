@@ -36,19 +36,23 @@ namespace Quiz_App
         public TakeQuiz(Quiz quiz)
         {
             InitializeComponent();
-
-            DispatcherTimer = new DispatcherTimer(new TimeSpan(0,0,1), DispatcherPriority.Background, t_Tick, Dispatcher.CurrentDispatcher);
-            DispatcherTimer.IsEnabled = true;
-
             TakeQuiz.Quiz = quiz;
+
+            if (Quiz.TimeInMin != null)
+            {
+                DispatcherTimer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Background, t_Tick, Dispatcher.CurrentDispatcher);
+                DispatcherTimer.IsEnabled = true;
+                TimeTextBlock.Text = FormatTimer((int)quiz.TimeInMin * 60);
+            }           
+        
             QuestionDao questionDao = new QuestionDao();
             questions = questionDao.findQuizQuestions(Quiz);
 
             // shuffle questions
             random = new Random();
             questions = questions.OrderBy(a=>random.Next()).ToList();
-            TimeTextBlock.Text = FormatTimer((int)quiz.TimeInMin*60);
-           QuizNameTextBlock.Text = quiz.Name;
+            
+            QuizNameTextBlock.Text = quiz.Name;
             setAllTextblock();
         }
 

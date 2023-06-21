@@ -8,6 +8,9 @@
       d:DesignHeight="550" d:DesignWidth="800"
       Title="Homepage"
       >
+    <Page.Resources>
+        <local:ToStringConverter x:Key="ToStringConverter" />
+    </Page.Resources>
 
     <!-- Loaded="Page_Loaded" można doać do Page<> aby zamykać popup kiedy minimalizuje się okno ale tylko kiedy używa się przycisku do minimalizowania, przy alt tab nie działa -->
 
@@ -178,11 +181,11 @@
                         <TextBlock Text="Results" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Foreground="White" FontSize="32" FontWeight="Medium" FontFamily="Montserrat"/>
                         
                            
-                            <ListBox Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding Results}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged_1">
+                            <ListBox x:Name="ResultsListBox" Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding Results}" Background="#2B2D42" SelectionChanged="ListBox_SelectionChanged_1">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Name}" Margin="5" Foreground="White"/>
+                                            <TextBlock Text="{Binding  Converter={StaticResource ToStringConverter}}" Margin="5" Foreground="White"/>
                                             <!--<TextBlock Text="{Binding Date}" Margin="5" Foreground="White"/>-->
                                         </StackPanel>
                                     </DataTemplate>

@@ -16,23 +16,14 @@ namespace Quiz_App
         public List<Result> Results { get; set; }
         public static User User { get; set; }
 
-        public class Result
-        {
-            public string Name { get; set; }
-            public string Date { get; set; }
-
-            public Result()
-            {
-                Name = String.Empty;
-                Date = String.Empty;
-            }
-        }
 
         public Homepage(User user) //nie jestem pewien ale wydaję mi się że trzeba rebuildować ten widok przy każdej zmianie czyli by użytkownik zobaczył zaktualizowany widok należy ... new Homepage();
         {
             InitializeComponent();
             QuizDao quizDao = new QuizDao();
             Quizzes = (List<Quiz>?)quizDao.findAll();
+            ResultDao dao = new ResultDao();
+            Results = (List<Result>?)dao.findAll();
             Homepage.User = user;
             DataContext = this;
         }
@@ -42,25 +33,7 @@ namespace Quiz_App
             InitializeComponent();
             QuizDao quizDao = new QuizDao();
             Quizzes = (List<Quiz>?)quizDao.findAll();
-            Results = new List<Result>
-            {
-                new Result { Name = "Quiz 1", Date = "01.01.2021" },
-                new Result { Name = "Quiz 2", Date = "01.01.2021" },
-                new Result { Name = "Quiz 3", Date = "01.01.2021" },
-                new Result { Name = "Quiz 4", Date = "01.01.2021" },
-                new Result { Name = "Quiz 5", Date = "01.01.2021" },
-                new Result { Name = "Quiz 6", Date = "01.01.2021" },
-                new Result { Name = "Quiz 7", Date = "01.01.2021" },
-                new Result { Name = "Quiz 8", Date = "01.01.2021" },
-                new Result { Name = "Quiz 9", Date = "01.01.2021" },
-                new Result { Name = "Quiz 10", Date = "01.01.2021" },
-                new Result { Name = "Quiz 11", Date = "01.01.2021" },
-                new Result { Name = "Quiz 12", Date = "01.01.2021" },
-                new Result { Name = "Quiz 13", Date = "01.01.2021" },
-                new Result { Name = "Quiz 14", Date = "01.01.2021" },
-                new Result { Name = "Quiz 15", Date = "01.01.2021" },
-                new Result { Name = "Quiz 16", Date = "01.01.2021" },
-            };
+            Results = null;
             DataContext = this;
         }
 
@@ -149,6 +122,9 @@ namespace Quiz_App
 
         private void showQuizResultsPopup(object sender, RoutedEventArgs e)
         {
+            ResultDao dao = new ResultDao();
+            Results = (List<Result>?)dao.findQuizResults((Quiz)QuizesListBox.SelectedItem);
+            ResultsListBox.Items.Refresh();
             QuizResults.IsOpen = true;
         }
 
